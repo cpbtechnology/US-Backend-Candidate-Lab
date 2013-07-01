@@ -60,9 +60,7 @@ Users will be able to:
 
 ## Documentation
 
-```
-Place documentation in the [docs/](docs/) folder
-```
+Place documentation in the [docs/](docs) folder
 
 ### API Specs
 
