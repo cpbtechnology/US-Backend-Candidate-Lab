@@ -60,6 +60,10 @@ Users will be able to:
 
 ## Documentation
 
+```
+Place documentation in the [docs/](docs/) folder
+```
+
 ### API Specs
 
 When creating an API it's important for the consumer of your services to understand how they work.  Create some documentation for your services so that another developer could create a website based on your API using only this document.
@@ -78,11 +82,3 @@ Submit a pull request when you are finished and satisfied with your work.
 
 1. Prove that your API works as expected by writing unit tests around your services.
 2. Put your services up on a server where they can be actively tested and include the link with your pull request.
-
-## Notes
-
-Use this area to communicate any thought processes, ideas, or challenges you encountered.  If you had more time, what would you enhance or do differently?
-
-*
-*
-*
