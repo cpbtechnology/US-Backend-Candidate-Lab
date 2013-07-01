@@ -9,6 +9,8 @@ Please use this as a way to communicate through your craft.
 
 One of the most common tasks for a backend developer is to create an API that can be used by a "client".  That "client" might be a website, mobile app, kiosk, etc.  Your task is to create a RESTful API that can be used to store, retrieve, update, and delete notes.
 
+**In lieu of creating something new, you may also submit existing code you've created (that you own) which demonstrates your back-end awesomeness.**
+
 *This lab is meant to take no more than 4 hours to complete.*  If you run out of time you may explain where you left off and any work that would still need to be done.
 
 ## Language / DB
