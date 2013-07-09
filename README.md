@@ -80,3 +80,6 @@ Submit a pull request when you are finished and satisfied with your work.
 
 1. Prove that your API works as expected by writing unit tests around your services.
 2. Put your services up on a server where they can be actively tested and include the link with your pull request.
+
+## License
+[MIT](http://opensource.org/licenses/MIT)
