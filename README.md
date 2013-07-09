@@ -1,6 +1,7 @@
 # CP+B Backend Candidate Lab
 
-Congratulations! If you've made it this far, we like you already.
+Hello and thank you for taking the time to work on this lab!
+
 This lab is an opportunity for us to have a conversation about practices, conventions, and workflow.
 It will also help us better understand you as a developer. 
 Please use this as a way to communicate through your craft.
