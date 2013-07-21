@@ -12,7 +12,7 @@ require_once 'idiorm.php';
 \Slim\Slim::registerAutoloader();
 
 // Setup DB
-ORM::configure('mysql:host=localhost;dbname=testBlog');
+ORM::configure('mysql:host=localhost;dbname=cpNotes');
 ORM::configure('username', 'root');
 ORM::configure('password', 'root');
 

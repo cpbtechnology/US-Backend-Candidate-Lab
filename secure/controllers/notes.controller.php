@@ -1,20 +1,20 @@
 <?php
 
-$app->get('/posts', function () use($app) {
-    $posts = ORM::for_table('posts')
+$app->get('/notes', function () use($app) {
+    $notes = ORM::for_table('notes')
 	->find_many(true);
 
     $app->response()->header('Content-Type', 'application/json');
-    echo json_encode($posts);
+    echo json_encode($notes);
 	
 });
 
-$app->post('/posts', function () use($app) {
+$app->post('/notes', function () use($app) {
 	
 	$params = (array) json_decode($app->request()->getBody());
 	
-    $post = ORM::for_table('posts')->create($params);
-	$post->save();
+    $notes = ORM::for_table('notes')->create($params);
+	$notes->save();
 	
 });
 

@@ -18,12 +18,12 @@ App.View.Dashboard = Backbone.View.extend({
 			['ul', this.collection.map(function(post){
 				return ['li',[
 					['.title', post.get('title')],
-					['.post_text', post.get('post_text')],
+					['.notes_description', post.get('description')],
 				]];
 			})],
 			['.form',[
 				['input.title', {placeholder: 'title', name: 'title'}],
-				['input.text', {placeholder: 'text', name: 'post_text'}],
+				['input.text', {placeholder: 'text', name: 'description'}],
 				['button.submit','submit'],
 			]]
 		]]
