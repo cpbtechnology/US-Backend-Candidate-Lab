@@ -21,26 +21,11 @@ $app = new \Slim\Slim(array(
 	'templates.path' => '../secure/Views',
 	'cookies.secret_key' => 'IkMHwZssJVe7XgdznBby'
 ));
-$app->get('/', function () use($app) {
-    $app->render("index.php");
-});
 
-$app->get('/posts', function () use($app) {
-    $posts = ORM::for_table('posts')
-	->find_many(true);
-
-    $app->response()->header('Content-Type', 'application/json');
-    echo json_encode($posts);
-	
-});
-
-$app->post('/posts', function () use($app) {
-	
-	$params = (array) json_decode($app->request()->getBody());
-	
-    $post = ORM::for_table('posts')->create($params);
-	$post->save();
-	
-});
+// AutoLoad Controller Routes
+foreach (glob("../secure/controllers/*.php") as $filename)
+{
+    require_once $filename;
+}  
 
 $app->run();
