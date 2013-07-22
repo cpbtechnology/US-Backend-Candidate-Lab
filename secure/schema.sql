@@ -12,3 +12,13 @@ CREATE TABLE notes
     description BLOB,
     PRIMARY KEY (id)
 );
+
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users
+(
+	id INT NOT NULL AUTO_INCREMENT,
+	user_name VARCHAR(255),
+	password VARCHAR(255),
+	PRIMARY KEY (id)
+);
