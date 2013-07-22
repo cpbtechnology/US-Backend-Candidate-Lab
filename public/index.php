@@ -6,10 +6,10 @@ date_default_timezone_set('MST');
 
 // auto-include
 set_include_path(get_include_path() . PATH_SEPARATOR . "../secure/libs");
+set_include_path(get_include_path() . PATH_SEPARATOR . "../secure/vendor");
 set_include_path(get_include_path() . PATH_SEPARATOR . "../secure/models");
-require_once 'Slim/Slim.php';
+require 'autoload.php';
 require_once 'idiorm.php';
-\Slim\Slim::registerAutoloader();
 
 // Setup DB
 ORM::configure('mysql:host=localhost;dbname=cpNotes');
@@ -21,6 +21,14 @@ $app = new \Slim\Slim(array(
 	'templates.path' => '../secure/Views',
 	'cookies.secret_key' => 'IkMHwZssJVe7XgdznBby'
 ));
+
+
+$app->hook("slim.before.dispatch", function () use ($app){  
+   $uri = $app->request()->getPathInfo();
+   if(!($uri === '/' || $uri === '/login'  || $uri === '/logout')){
+
+   }
+});
 
 // AutoLoad Controller Routes
 foreach (glob("../secure/controllers/*.php") as $filename)
