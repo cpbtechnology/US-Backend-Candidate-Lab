@@ -8,7 +8,7 @@ $app->post('/users', function () use($app) {
 	    'password' => 'required|max_len,100|min_len,6'
 	));
 
-	$validParams['password'] = md5($validParams['password']);
+	$validParams['password'] = crypt($validParams['password'], CRYPT_SALT);
 	
 
 	if(!ORM::for_table('users')->where('user_name', $validParams['user_name'])->find_one()){
@@ -21,3 +21,5 @@ $app->post('/users', function () use($app) {
     
 	
 });
+
+?>

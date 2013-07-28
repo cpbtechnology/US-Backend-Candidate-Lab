@@ -9,31 +9,34 @@ set_include_path(get_include_path() . PATH_SEPARATOR . "../secure/libs");
 set_include_path(get_include_path() . PATH_SEPARATOR . "../secure/vendor");
 set_include_path(get_include_path() . PATH_SEPARATOR . "../secure/models");
 require 'autoload.php';
+require_once 'httpBasicAuth.middleware.php';
 require_once 'idiorm.php';
+require_once '../secure/config.php';
 
 // Setup DB
 ORM::configure('mysql:host=localhost;dbname=cpNotes');
 ORM::configure('username', 'root');
 ORM::configure('password', 'root');
 
+\Slim\Route::setDefaultConditions(array(
+  'id' => '[0-9]*',
+  'parentId' => '[0-9]{1,}'
+));
 
 $app = new \Slim\Slim(array(
 	'templates.path' => '../secure/Views',
 	'cookies.secret_key' => 'IkMHwZssJVe7XgdznBby'
 ));
 
+// Init instance userid
+$app->userId = null;
 
-$app->hook("slim.before.dispatch", function () use ($app){  
-   $uri = $app->request()->getPathInfo();
-   if(!($uri === '/' || $uri === '/login'  || $uri === '/logout')){
-
-   }
-});
+$app->add(new HttpBasicAuth(array('/users')));
 
 // AutoLoad Controller Routes
 foreach (glob("../secure/controllers/*.php") as $filename)
 {
     require_once $filename;
-}  
+}
 
 $app->run();
