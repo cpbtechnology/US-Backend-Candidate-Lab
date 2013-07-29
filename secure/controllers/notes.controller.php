@@ -2,30 +2,37 @@
 
 $app->get('/notes', function () use($app) {
     $notes = ORM::for_table('notes')
-    	->where('user_id', $_SESSION['userId'])
+    	->where('user_id', $app->userId)
 		->find_many(true);
 
-	if(!empty($notes)){
+	if(empty($notes)){
 		$app->halt(500, 'Does not exist or you do not have access.');
 	}
 
+	$decryptedNotes = array_map(function($note){
+		$output = $note;
+		$output['description'] = $app->cryptastic->decrypt($note['description'], $app->cryptKey);
+	}, $notes);
+
 	$app->response()->header('Content-Type', 'application/json');
-    echo json_encode($notes);
+    echo json_encode($decryptedNotes);
 	
 });
 
 $app->get('/notes/:id', function ($id) use($app) {
     $note = ORM::for_table('notes')
     	->where('id', $id)
-    	->where('user_id', $_SESSION['userId'])
+    	->where('user_id', $app->userId)
 		->find_one();
 
-	if(!$notes){
+	if(!$note){
 		$app->halt(500, 'Does not exist or you do not have access.');
 	}
 
+	$note->description = $app->cryptastic->decrypt($note->description, $app->cryptKey);
+
     $app->response()->header('Content-Type', 'application/json');
-    echo json_encode($note);
+    echo json_encode($note->as_array());
 	
 });
 
@@ -33,14 +40,22 @@ $app->post('/notes', function () use($app) {
 	$requestParams = json_decode($app->request()->getBody(), true);
 
 	$validParams = ValidationModel::validate($app, $requestParams, array(
-	    'title' => 'required|valid_email|max_len,255',
+	    'title' => 'required|max_len,255',
 	    'description' => 'required|max_len,10000'
 	));
 
-	$validParams['user_id'] = $_SESSION['userId'];
+	// Setup Params
+	$validParams['user_id'] = $app->userId;
+	$validParams['description'] = $app->cryptastic->encrypt(
+		$validParams['description'], 
+		$app->cryptKey
+	);
+
 	
     $notes = ORM::for_table('notes')->create($validParams);
 	$notes->save();
+
+	echo json_encode(array('id'=>$notes->id()));
 	
 });
 
@@ -48,14 +63,21 @@ $app->put('/notes/:id', function ($id) use($app) {
     $requestParams = json_decode($app->request()->getBody(), true);
 
 	$validParams = ValidationModel::validate($app, $requestParams, array(
-	    'title' => 'required|valid_email|max_len,255',
-	    'description' => 'required|max_len,10000'
+	    'title' => 'max_len,255',
+	    'description' => 'max_len,10000'
 	));
 
-	$validParams['user_id'] = $_SESSION['userId'];
+	// Setup Params
+	$validParams['user_id'] = $app->userId;
+	if(isset($validParams['description'])){
+		$validParams['description'] = $app->cryptastic->encrypt(
+			$validParams['description'], 
+			$app->cryptKey
+		);
+	}
 	
     $notes = ORM::for_table('notes')
-	    ->where('user_id', $_SESSION['userId'])
+	    ->where('user_id', $app->userId)
 	    ->where('id', $id)
 	    ->find_one();
 
@@ -65,12 +87,13 @@ $app->put('/notes/:id', function ($id) use($app) {
 
 	$notes->set($validParams);
 	$notes->save();
+	echo json_encode(array('id'=>$id));
 	
 });
 
 $app->delete('/notes/:id', function ($id) use($app) {	
     $note = ORM::for_table('notes')
-    	->where('user_id', $_SESSION['userId'])
+    	->where('user_id', $app->userId)
     	->where('id', $id)
     	->find_one();
 
@@ -79,7 +102,10 @@ $app->delete('/notes/:id', function ($id) use($app) {
 	}
 
 	$note->delete();
-	
+
+	$app->response()->header('Content-Type', 'application/json');
+    echo json_encode(array('id'=>$id));
+
 });
 
 ?>

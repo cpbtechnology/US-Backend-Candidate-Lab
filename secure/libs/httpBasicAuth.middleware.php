@@ -1,6 +1,7 @@
 <?php
 
 require_once 'idiorm.php';
+require_once 'cryptastic.php';
  
 class HttpBasicAuth extends \Slim\Middleware
 {
@@ -71,6 +72,11 @@ class HttpBasicAuth extends \Slim\Middleware
         $authPass = $req->headers('PHP_AUTH_PW');
         $userId = $this->authenticate($authUser, $authPass);
         if (in_array($uri, $this->exclude) || !!$userId) {
+            // Setup Encryption
+            $cryptastic = new cryptastic;
+            $this->app->cryptastic = $cryptastic;
+            $this->app->cryptKey = $cryptastic->pbkdf2($authPass, CRYPT_SALT, 1000, 32);
+            // Setup Userid
             $this->app->userId = $userId;
             $this->next->call();
         } else {
