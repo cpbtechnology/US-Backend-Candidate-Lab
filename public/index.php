@@ -31,7 +31,7 @@ $app = new \Slim\Slim(array(
 // Init instance userid
 $app->userId = null;
 
-$app->add(new HttpBasicAuth(array('/users')));
+$app->add(new HttpBasicAuth(array('/notes')));
 
 // AutoLoad Controller Routes
 foreach (glob("../secure/controllers/*.php") as $filename)
