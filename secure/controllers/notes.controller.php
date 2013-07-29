@@ -12,6 +12,7 @@ $app->get('/notes', function () use($app) {
 	$decryptedNotes = array_map(function($note) use($app){
 		$output = $note;
 		$output['description'] = $app->cryptastic->decrypt($note['description'], $app->cryptKey);
+		return $output;
 	}, $notes);
 
 	$app->response()->header('Content-Type', 'application/json');
