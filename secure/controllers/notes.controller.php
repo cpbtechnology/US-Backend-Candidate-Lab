@@ -97,7 +97,7 @@ $app->delete('/notes/:id', function ($id) use($app) {
     	->where('id', $id)
     	->find_one();
 
-    if(!$notes){
+    if(!$note){
 		$app->halt(500, 'Does not exist or you do not have access.');
 	}
 
