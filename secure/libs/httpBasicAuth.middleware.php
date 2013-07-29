@@ -71,7 +71,7 @@ class HttpBasicAuth extends \Slim\Middleware
         $authUser = $req->headers('PHP_AUTH_USER');
         $authPass = $req->headers('PHP_AUTH_PW');
         $userId = $this->authenticate($authUser, $authPass);
-        if (!in_array($uri, $this->exclude) || !!$userId) {
+        if (in_array($uri, $this->exclude) || !!$userId) {
             // Setup Encryption
             $cryptastic = new cryptastic;
             $this->app->cryptastic = $cryptastic;
