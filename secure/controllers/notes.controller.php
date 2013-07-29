@@ -9,7 +9,7 @@ $app->get('/notes', function () use($app) {
 		$app->halt(500, 'Does not exist or you do not have access.');
 	}
 
-	$decryptedNotes = array_map(function($note){
+	$decryptedNotes = array_map(function($note) use($app){
 		$output = $note;
 		$output['description'] = $app->cryptastic->decrypt($note['description'], $app->cryptKey);
 	}, $notes);
