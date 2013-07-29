@@ -14,9 +14,9 @@ require_once 'idiorm.php';
 require_once '../secure/config.php';
 
 // Setup DB
-ORM::configure('mysql:host=localhost;dbname=cpNotes');
-ORM::configure('username', 'root');
-ORM::configure('password', 'root');
+ORM::configure('mysql:host='.DATABASE_SERVER.';port='.DATABASE_PORT.';dbname='.DATABASE_NAME);
+ORM::configure('username', DATABASE_USER);
+ORM::configure('password', DATABASE_PASS);
 
 \Slim\Route::setDefaultConditions(array(
   'id' => '[0-9]*',
