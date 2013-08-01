@@ -8,7 +8,8 @@ $app->get('/notes', function () use($app) {
 		->find_many(true);
 
 	if(empty($notes)){
-		$app->halt(500, 'Does not exist or you do not have access.');
+		$app->response()->header('Content-Type', 'application/json');
+    	echo json_encode(array());
 	}
 
 	$decryptedNotes = array_map(function($note) use($app){
