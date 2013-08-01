@@ -2,7 +2,7 @@ at# CP+B Backend Candidate Lab
 
 ## Documentation
 
-Place any related documentation in this folder.
+API Hosted at: http://cplab.gopagoda.com/
 
 ## Notes
 
@@ -21,4 +21,7 @@ Place any related documentation in this folder.
 * add pagination for return results
 
 ## Documentation:
-API Documentation
+
+API Documentation can be found at http://docs.cplab.apiary.io/
+
+apiary serves as an easy integration testing and document generator
