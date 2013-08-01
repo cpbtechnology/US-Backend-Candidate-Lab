@@ -1,4 +1,5 @@
 web1:
+  type: php
   document_root: public/
   php_version: 5.3.8
   php_date_timezone: America/Denver

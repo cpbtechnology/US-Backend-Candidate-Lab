@@ -14,6 +14,7 @@ $app->post('/users', function () use($app) {
 	if(!ORM::for_table('users')->where('user_name', $validParams['user_name'])->find_one()){
 		$notes = ORM::for_table('users')->create($validParams);
 		$notes->save();
+		echo json_encode(array('id'=>$notes->id()));
 	}
 	else{
 		$app->halt(500, 'User Already Exists');

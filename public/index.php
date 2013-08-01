@@ -24,7 +24,7 @@ ORM::configure('password', DATABASE_PASS);
 ));
 
 $app = new \Slim\Slim(array(
-	'templates.path' => '../secure/Views',
+	'templates.path' => '../secure/views',
 	'cookies.secret_key' => 'IkMHwZssJVe7XgdznBby'
 ));
 
@@ -32,6 +32,7 @@ $app = new \Slim\Slim(array(
 $app->userId = null;
 
 $app->add(new HttpBasicAuth(array('/notes')));
+
 
 // AutoLoad Controller Routes
 foreach (glob("../secure/controllers/*.php") as $filename)

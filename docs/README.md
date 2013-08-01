@@ -1,4 +1,4 @@
-# CP+B Backend Candidate Lab
+at# CP+B Backend Candidate Lab
 
 ## Documentation
 
@@ -15,4 +15,10 @@ Place any related documentation in this folder.
 * Abstract/Refactor business logic from controllers to models
 * Abstract cryptastic from httpbasicauth into it's own middleware
 * Implement over HTTPS vs normal http
+* Implement Digest instead of basic auth
 * Abstract controller return value so you no longer have to set headers, do json etc.
+* Started work on integration unit tests but did
+* add pagination for return results
+
+## Documentation:
+API Documentation
