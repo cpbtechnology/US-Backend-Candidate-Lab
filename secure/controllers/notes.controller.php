@@ -1,5 +1,7 @@
 <?php
 
+require_once "validation.model.php";
+
 $app->get('/notes', function () use($app) {
     $notes = ORM::for_table('notes')
     	->where('user_id', $app->userId)

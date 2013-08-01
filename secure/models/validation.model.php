@@ -1,5 +1,5 @@
 <?php
-require 'deftx/gump/gump.class.php';
+require_once 'gump.class.php';
 
 class ValidationModel {
 	

@@ -1,6 +1,5 @@
 {
     "require": {
-        "slim/slim": "2.*",
-        "deftx/gump": "dev-master"
+        "slim/slim": "2.*"
     }
 }

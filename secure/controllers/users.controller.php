@@ -1,5 +1,7 @@
 <?php
 
+require_once "validation.model.php";
+
 $app->post('/users', function () use($app) {
 	$requestParams = json_decode($app->request()->getBody(), true);
 
