@@ -1,5 +1,6 @@
 var Q = require('q');
 var mongodb = require('mongodb');
+var BSON = mongodb.BSONPure;
 
 var serverAddr = '127.0.0.1';
 var serverPort = 27017;
@@ -14,31 +15,31 @@ var getCollection = function(name) {
     });
 };
 
-var hasEntity = function(type, id) {
-    return getCollection(type).ninvoke('findOne', { _id: id }).then(function(data) {
+var hasEntity = function(type, query) {
+    return getCollection(type).ninvoke('findOne', query).then(function(data) {
         return data ? true : false;
     });
 };
 
-var getEntity = function(type, id) {
-    return getCollection(type).ninvoke('findOne', { _id: id });
+var getEntity = function(type, query) {
+    return getCollection(type).ninvoke('findOne', query);
 };
 
 var insertEntity = function(type, data) {
     return getCollection(type).ninvoke('insert', data);
 };
 
-var putEntity = function(type, id, data) {
+var putEntity = function(type, query, data) {
     delete data._id;
-    return getCollection(type).ninvoke('update', { _id: id }, { $set: data }, { upsert: true });
+    return getCollection(type).ninvoke('update', query, { $set: data }, { upsert: true });
 };
 
-var deleteEntity = function(type, id) {
-    return getCollection(type).ninvoke('remove', { _id: id });
+var deleteEntity = function(type, query) {
+    return getCollection(type).ninvoke('remove', query);
 };
 
-var getEntities = function(type) {
-    return getCollection(type).ninvoke('find').ninvoke('toArray');
+var getEntities = function(type, query) {
+    return getCollection(type).ninvoke('find', query).ninvoke('toArray');
 };
 
 module.exports.hasEntity = hasEntity;
@@ -47,5 +48,8 @@ module.exports.putEntity = putEntity;
 module.exports.getEntities = getEntities;
 module.exports.deleteEntity = deleteEntity;
 module.exports.insertEntity = insertEntity;
+module.exports.oid = function (id) {
+  return new BSON.ObjectID(id);
+}
 
 module.exports.getCollection = getCollection;
