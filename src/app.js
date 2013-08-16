@@ -25,8 +25,17 @@ app.get(/\/notes\/(\d+)/, function (req, res) {
 });
 
 app.get(/\/notes/, function (req, res) {
-  console.log('notes');
   db.getEntities('notes').then(function () {
+    res.send("ok: "  + JSON.stringify(arguments));
+  }, function (err) {
+    res.writeHead(400, "Bad request");
+    res.send(err);
+  });
+});
+
+app.delete(/\/notes\/(\d+)/, function (req, res) {
+  var id = req.params[0];
+  db.deleteEntity('notes', id).then(function () {
     res.send("ok: "  + JSON.stringify(arguments));
   }, function (err) {
     res.writeHead(400, "Bad request");

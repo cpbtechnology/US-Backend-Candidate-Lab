@@ -29,6 +29,10 @@ var putEntity = function(type, id, data) {
     return getCollection(type).ninvoke('update', { _id: id }, { $set: data }, { upsert: true });
 };
 
+var deleteEntity = function(type, id) {
+    return getCollection(type).ninvoke('remove', { _id: id });
+};
+
 var getEntities = function(type) {
     return getCollection(type).ninvoke('find').ninvoke('toArray');
 };
@@ -37,5 +41,6 @@ module.exports.hasEntity = hasEntity;
 module.exports.getEntity = getEntity;
 module.exports.putEntity = putEntity;
 module.exports.getEntities = getEntities;
+module.exports.deleteEntity = deleteEntity;
 
 module.exports.getCollection = getCollection;
