@@ -1,0 +1,18 @@
+NotesApi implementation is using express+mongodb+passport stack.
+
+To run it:
+
+Run mongodb (exptected at localhost:27017) or just run database\MongoDb\mongodb-service-install.cmd for windows.
+Run server 'node app.js' or run-server.cmd.
+
+To use it: 
+
+Browse http://localhost:3000/ - and login via google authentication. This would set the proper cookie header so it will be possible to use the following API:
+
+POST	/notes?text=xxx			- create a new note, returns { ID, Text }
+GET	/notes				- lists all notes [{ ID, Text }, ...]
+GET	/notes/:id			- gets the note by id, returns { ID, Text }
+PUT	/notes/:id?text=xxx		- updates the note by id, returns { ID, Text }
+DELETE	/notes/:id			- deletes the note by id
+
+It's possible to add more auhtentication options, and implement login as separate API call but this would require additional time, and it's better to negotiate them before implementation.
