@@ -25,8 +25,8 @@ app.get(/\/notes\/(\w+)/, function (req, res) {
 });
 
 app.get(/\/notes/, function (req, res) {
-  db.getEntities('notes').then(function () {
-    res.send("ok: "  + JSON.stringify(arguments));
+  db.getEntities('notes').then(function (data) {
+    res.send(data);
   }, function (err) {
     res.writeHead(400, "Bad request");
     res.send(err);
