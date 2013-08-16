@@ -12,10 +12,7 @@ import com.fdvs.cpb.backendlab.util.IUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -39,20 +36,51 @@ public class NoteController extends BaseController {
         this.noteService = noteService;
     }
 
+    /**
+     * Creates a new note. Title is mandatory.
+     *
+     * @param userId
+     * @param title
+     * @param description
+     * @return
+     * @throws ServiceException
+     */
     @RequestMapping( value = "/{userId}/add", method = RequestMethod.POST )
     @ResponseBody
-    public I_CreateNoteResponse getTodosLosClientes(@PathVariable Long userId, @PathVariable String title, @PathVariable String description) throws ServiceException {
+    public I_CreateNoteResponse addNote(@PathVariable Long userId,
+                                        @RequestParam String title,
+                                        @RequestParam String description) throws ServiceException {
         Note note = noteService.createNote(userId,title,description);
         return new I_CreateNoteResponse("OK","Note created",note.getId());
     }
 
+    /**
+     * Updates an existing note.
+      * @param userId
+     * @param noteId
+     * @param title
+     * @param description
+     * @return
+     * @throws ServiceException
+     */
     @RequestMapping( value = "/{userId}/note/{noteId}/update", method = RequestMethod.POST )
     @ResponseBody
-    public I_UpdateNoteResponse getTodosLosClientes(@PathVariable Long userId, @PathVariable Long noteId,@PathVariable String title, @PathVariable String description) throws ServiceException {
+    public I_UpdateNoteResponse updateNote(@PathVariable Long userId,
+                                           @PathVariable Long noteId,
+                                           @RequestParam String title,
+                                           @RequestParam String description) throws ServiceException {
         Note note = noteService.updateNote(userId, noteId, title, description);
         return new I_UpdateNoteResponse("OK","Note updated",note.getId(),note.getLastModified());
     }
 
+    /**
+     * Delelete a note by its id.
+     *
+     * @param userId
+     * @param noteId
+     * @return
+     * @throws ServiceException
+     */
     @RequestMapping( value = "/{userId}/note/{noteId}/delete", method = RequestMethod.POST )
     @ResponseBody
     public I_DeleteNoteResponse getTodosLosClientes(@PathVariable Long userId, @PathVariable Long noteId) throws ServiceException {
@@ -60,6 +88,14 @@ public class NoteController extends BaseController {
         return new I_DeleteNoteResponse("OK","Note deleted");
     }
 
+    /**
+     * Returns a specific note.
+     *
+     * @param userId
+     * @param noteId
+     * @return
+     * @throws ServiceException
+     */
     @RequestMapping( value = "/{userId}/note/{noteId}/get", method = RequestMethod.GET )
     @ResponseBody
     public I_Note getNote(@PathVariable Long userId, @PathVariable Long noteId) throws ServiceException {
@@ -70,9 +106,20 @@ public class NoteController extends BaseController {
         return iNote;
     }
 
+    /**
+     * Returns the user notes. It cant be paginated through request parameters pageSize and pageNumber
+     *
+     * @param userId
+     * @param pageSize
+     * @param pageNumber
+     * @return
+     * @throws ServiceException
+     */
     @RequestMapping( value = "/{userId}/list", method = RequestMethod.GET )
     @ResponseBody
-    public List<I_Note> listNotes(@PathVariable Long userId, int pageSize, int pageNumber)
+    public List<I_Note> listNotes(@PathVariable Long userId,
+                                  @RequestParam(required = false) int pageSize,
+                                  @RequestParam(required = false)int pageNumber)
             throws ServiceException {
         List<Note> notes = noteService.listNotes(userId, pageSize,pageNumber);
 

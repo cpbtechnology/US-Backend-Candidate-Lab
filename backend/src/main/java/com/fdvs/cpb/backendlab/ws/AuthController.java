@@ -40,6 +40,15 @@ public class AuthController {
         return null;
     }
 
+    /**
+     * Logs in the user in the system. if OK returns a json representation of I_LoginResponse.
+     *
+     *
+     * @param username the username
+     * @param password clean user password
+     * @return
+     * @throws ServiceException
+     */
     @RequestMapping( value = "/login", method = RequestMethod.POST )
     @ResponseBody
     public I_LoginResponse login(@RequestParam String username, @RequestParam String password) throws ServiceException {
@@ -47,9 +56,20 @@ public class AuthController {
         return resp;
     }
 
+    /**
+     * Creates a new account. username and email must be unique and not null.
+     * @param username
+     * @param email
+     * @param password
+     * @return
+     * @throws ServiceException
+     */
     @RequestMapping( value = "/createAccount", method = RequestMethod.POST )
     @ResponseBody
-    public I_LoginResponse login(@RequestParam("username") String username, @RequestParam("email") String email, @RequestParam("password") String password) throws ServiceException {
+    public I_LoginResponse login(@RequestParam("username") String username,
+                                 @RequestParam("email") String email,
+                                 @RequestParam("password") String password)
+            throws ServiceException {
         User user = authService.createAccount(username, email, password);
         I_LoginResponse resp = null;
         if (user != null){
