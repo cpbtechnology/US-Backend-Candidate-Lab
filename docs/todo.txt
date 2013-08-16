@@ -1,0 +1,4 @@
+
+1. Add login/register API.
+2  Add better error handling and return codes.
+3. Add unit tests.
