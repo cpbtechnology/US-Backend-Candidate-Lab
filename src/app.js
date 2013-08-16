@@ -14,7 +14,7 @@ app.use(function (err, req, res, next) {
     next(err);
 });
 
-app.get(/\/notes\/(\d+)/, function (req, res) {
+app.get(/\/notes\/(\w+)/, function (req, res) {
   var id = req.params[0];
   db.getEntity('notes', id).then(function (data) {
     res.send(data);
@@ -33,20 +33,29 @@ app.get(/\/notes/, function (req, res) {
   });
 });
 
-app.delete(/\/notes\/(\d+)/, function (req, res) {
+app.delete(/\/notes\/(\w+)/, function (req, res) {
   var id = req.params[0];
   db.deleteEntity('notes', id).then(function () {
-    res.send("ok: "  + JSON.stringify(arguments));
+    res.send(true);
   }, function (err) {
     res.writeHead(400, "Bad request");
     res.send(err);
   });
 });
 
-app.post(/\/notes\/(\d+)/, function (req, res) {
+app.post(/\/notes/, function (req, res) {
+  db.insertEntity('notes', { text: req.query.text }).then(function (data) {
+    res.send(data[0]);
+  }, function (err) {
+    res.writeHead(400, "Bad request");
+    res.send(err);
+  });;
+});
+
+app.put(/\/notes\/(\w+)/, function (req, res) {
   var id = req.params[0];
-  db.putEntity('notes', id, { text: '123' }).then(function (ok) {
-    res.send("ok: "  + JSON.stringify(arguments));
+  db.putEntity('notes', id, { text: req.query.text }).then(function (data) {
+    res.send({ _id: id, text: req.query.text });
   }, function (err) {
     res.writeHead(400, "Bad request");
     res.send(err);
