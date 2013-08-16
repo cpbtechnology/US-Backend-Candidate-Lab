@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--
+
+    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <bean id="baseDao" class="com.fdvs.cpb.backendlab.dao.BaseDao">
+        <property name="hibernateTemplate" ref="hibernateTemplate" />
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+-->
+
+</beans>
