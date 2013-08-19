@@ -1,0 +1,37 @@
+Installation notes:
+-------------------
+
+Database: 
+---------
+
+For this demo we use MySQL. By default the user tries to connect to "localhost" with the following information:
+
+host		: localhost
+database	: cpbbackendlab
+user		: cpbbackendlab
+password	: cpbbackendlab
+
+If you need to change this, you have to change in 2 places:
+
+ - backend/src/main/resources/META-INF/persistence.xml
+ - backend/src/main/resources/application.properties
+
+You need maven 3 to build the code.
+
+Go to backend folder and type  
+
+	mvn package
+	
+Find the war in the target folder.
+
+Deploy:
+-------
+
+You need tomcat 6 or newer. Also you need to copy the file spring-tomcat-weaver-2.5.6.SEC03.jar in your tomcats lib folder.
+
+
+Arquitecture:
+-------------
+
+The applications uses Sptring 3, Spring MVC (for webservices), Eclipse Link (for persistence) and Jascson Mapper (for JSON serialization)
+

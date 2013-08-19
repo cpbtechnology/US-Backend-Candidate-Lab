@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--
+        Activates a load-time weaver for the context. Any bean within the
+        context that implements LoadTimeWeaverAware (such as
+        LocalContainerEntityManagerFactoryBean) will receive a reference to
+        the autodetected load-time weaver.
+    -->
+    <context:load-time-weaver aspectj-weaving="on"/>
+
+    <bean id="springHelper" class="com.fdvs.cpb.backendlab.SpringHelper" lazy-init="false"
+          factory-method="getInstance" />
+
+    <!--
+        Activates various annotations to be detected in bean classes: Spring's
+        @Required and @Autowired, as well as JSR 250's @PostConstruct,
+        @PreDestroy and @Resource (if available) and JPA's @PersistenceContext
+        and @PersistenceUnit (if available).
+    -->
+    <context:annotation-config />
+
+    <context:property-placeholder location="classpath*:/application.properties" />
+
+    <bean id="properties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="locations">
+            <list>
+                <value>classpath*:/application.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <context:component-scan base-package="com.fdvs.cpb.backendlab.ws" />
+
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass"	value="${spring.datasource.driverClassName}" />
+        <property name="jdbcUrl"		value="${spring.datasource.url}" />
+        <property name="user"			value="${spring.datasource.username}" />
+        <property name="password"		value="${spring.datasource.password}" />
+        <property name="maxPoolSize" 	value="${spring.datasource.maxPoolSize}"/>
+        <!--
+        <property name="initialPoolSize" username="${database.initialPoolSize}"/>
+        <property name="minPoolSize" username="${database.minPoolSize}"/>
+        <property name="maxPoolSize" username="${database.maxPoolSize}"/>
+        <property name="acquireIncrement" username="${database.acquireIncrement}"/>
+        <property name="maxConnectionAge" username="${database.maxConnectionAge}"/>
+        <property name="maxIdleTime" username="${database.maxIdleTime}"/>
+        <property name="maxIdleTimeExcessConnections" username="${database.maxIdleTimeExcessConnections}"/>
+        <property name="unreturnedConnectionTimeout" username="${database.unreturnedConnectionTimeout}"/>
+        <property name="preferredTestQuery" username="${database.preferredTestQuery}"/>
+         -->
+    </bean>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <import resource="classpath*:/spring/*-spring.xml"/>
+
+</beans>

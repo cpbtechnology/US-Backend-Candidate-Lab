@@ -1,0 +1,61 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+         xmlns:beans="http://www.springframework.org/schema/beans"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:p="http://www.springframework.org/schema/p"
+         xmlns:c="http://www.springframework.org/schema/c"
+         xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+      http://www.springframework.org/schema/security
+      http://www.springframework.org/schema/security/spring-security-3.1.xsd
+      ">
+
+    <!-- Security configuration -->
+
+    <global-method-security pre-post-annotations="enabled" />
+
+
+    <http entry-point-ref="restAuthenticationEntryPoint" use-expressions="true"
+          auto-config="false" create-session="stateless" realm="Protected API">
+
+        <intercept-url pattern="/ws/auth/login" access="permitAll" />
+        <intercept-url pattern="/ws/auth/createAccount" access="permitAll" />
+        <intercept-url pattern="/ws/**" access="hasRole('ROLE_USER')"/>
+
+        <custom-filter ref="myFilter" position="FORM_LOGIN_FILTER"/>
+        <logout />
+    </http>
+
+    <beans:bean id="myFilter" class="org.springframework.security.web.authentication.www.BasicAuthenticationFilter">
+        <beans:property name="authenticationManager" ref="authenticationManager"/>
+        <beans:property name="authenticationEntryPoint" ref="restAuthenticationEntryPoint" />
+        <!--<beans:property name="authenticationSuccessHandler" ref="mySuccessHandler"/>-->
+    </beans:bean>
+
+    <!--
+        <beans:bean id="myFilter" class="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter">
+            <beans:property name="authenticationManager" ref="authenticationManager"/>
+            <beans:property name="authenticationSuccessHandler" ref="mySuccessHandler"/>
+            <beans:property name="postOnly" username="false" />
+        </beans:bean>
+        <beans:bean id="mySuccessHandler"
+                    class="com.fdvs.cpb.backendlab.ws.SavedRequestAwareAuthenticationSuccessHandler"/>
+    -->
+
+
+    <authentication-manager alias="authenticationManager" >
+        <!--<authentication-provider user-service-ref="inMemoryUsers" />-->
+        <authentication-provider user-service-ref="authService" >
+            <password-encoder hash="md5" />
+        </authentication-provider>
+
+
+
+    </authentication-manager>
+
+    <user-service id="inMemoryUsers">
+        <user name="temporary" password="temporary" authorities="ROLE_ADMIN"/>
+        <user name="user" password="user" authorities="ROLE_USER"/>
+    </user-service>
+
+
+</beans:beans>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+    <persistence-unit name="cpbBackendPU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
+        <class>com.fdvs.cpb.backendlab.model.auth.User</class>
+        <class>com.fdvs.cpb.backendlab.model.notes.Note</class>
+
+        <!--<class>com.fdvs.cpb.backendlab.model.auth.Usuario</class>
+        <class>com.fdvs.cpb.backendlab.model.Cliente</class>
+        <class>com.fdvs.cpb.backendlab.model.DestinatarioMercancia</class>
+        <class>com.fdvs.cpb.backendlab.model.BonificacionCanal</class>
+        <class>com.fdvs.cpb.backendlab.model.Analista</class>
+        <class>com.fdvs.cpb.backendlab.model.Pedido</class>
+        <class>com.fdvs.cpb.backendlab.model.Producto</class>
+        <class>com.fdvs.cpb.backendlab.model.ServicioProducto</class>
+        <class>com.fdvs.cpb.backendlab.model.FamiliaProducto</class>
+        <class>com.fdvs.cpb.backendlab.model.Vendedor</class>
+        <class>com.fdvs.cpb.backendlab.model.Zona</class>
+        <class>com.fdvs.cpb.backendlab.model.BonificacionCliente</class>
+
+        <class>com.fdvs.cpb.backendlab.model.solicitudes.AltaCliente</class>
+        <class>com.fdvs.cpb.backendlab.model.solicitudes.AltaPedido</class>
+        <class>com.fdvs.cpb.backendlab.model.solicitudes.Archivo</class>
+
+        <class>com.fdvs.cpb.backendlab.model.termometro.Competidor</class>
+        <class>com.fdvs.cpb.backendlab.model.termometro.ConfiguracionTermometro</class>
+        <class>com.fdvs.cpb.backendlab.model.termometro.Flete</class>
+        <class>com.fdvs.cpb.backendlab.model.termometro.ProductoTestigo</class>
+        <class>com.fdvs.cpb.backendlab.model.termometro.RelevamientoProducto</class>
+        <class>com.fdvs.cpb.backendlab.model.termometro.ZonaRelevamiento</class>
+
+        <class>com.fdvs.cpb.backendlab.model.ItemPedido</class>
+
+        <class>com.fdvs.cpb.backendlab.model.Cotizacion</class>-->
+
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <shared-cache-mode>NONE</shared-cache-mode>
+
+
+        <properties>
+            <property name="eclipselink.jdbc.platform" value="org.eclipse.persistence.platform.database.MySQLPlatform"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/cpbbackendlab?autoReconnect=true"/>
+            <property name="javax.persistence.jdbc.user" value="cpbbackendlab"/>
+            <property name="javax.persistence.jdbc.password" value="cpbbackendlab"/>
+            <property name="eclipselink.logging.level" value="INFO" />
+            <property name="eclipselink.ddl-generation" value="create-or-extend-tables" />
+            <property name="eclipselink.ddl-generation.output-mode" value="database"/>
+            <property name="autoReconnect" value="true" />
+            <property name="" value="true" />
+        </properties>
+
+<!--
+-->
+
+    </persistence-unit>
+</persistence>
