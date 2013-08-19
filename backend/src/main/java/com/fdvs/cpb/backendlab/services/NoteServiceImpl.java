@@ -92,13 +92,16 @@ public class NoteServiceImpl extends BaseService implements NoteService  {
     }
 
     @Override
-    public List<Note> listNotes(Long userId, int pageSize, int pageNumber) throws ServiceException {
+    public List<Note> listNotes(Long userId, Integer pageSize, Integer pageNumber) throws ServiceException {
         User user = getUserOrDie(userId);
         TypedQuery<Note> query = entityManager.createQuery("select n from Note n where n.owner = :owner order by n.id asc", Note.class);
         query.setParameter("owner",user);
 
-        if (pageSize > 0){
+        if (pageSize != null && pageSize > 0){
             query.setMaxResults(pageSize);
+
+            if (pageNumber == null)
+                pageNumber = 1;
 
             query.setFirstResult(pageSize*( Math.max(0,pageNumber-1)));
         }

@@ -118,8 +118,8 @@ public class NoteController extends BaseController {
     @RequestMapping( value = "/{userId}/list", method = RequestMethod.GET )
     @ResponseBody
     public List<I_Note> listNotes(@PathVariable Long userId,
-                                  @RequestParam(required = false) int pageSize,
-                                  @RequestParam(required = false)int pageNumber)
+                                  @RequestParam(required = false) Integer pageSize,
+                                  @RequestParam(required = false) Integer pageNumber)
             throws ServiceException {
         List<Note> notes = noteService.listNotes(userId, pageSize,pageNumber);
 

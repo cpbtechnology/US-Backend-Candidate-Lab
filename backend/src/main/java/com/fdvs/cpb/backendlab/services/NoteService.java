@@ -21,5 +21,5 @@ public interface NoteService {
 
     void deleteNote(Long userId, Long noteId) throws ServiceException;
 
-    List<Note> listNotes(Long userId, int pageSize, int pageNumber) throws ServiceException;
+    List<Note> listNotes(Long userId, Integer pageSize, Integer pageNumber) throws ServiceException;
 }
