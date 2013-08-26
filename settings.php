@@ -15,6 +15,9 @@ $settings['db'] = [
 
 $settings['urls'] = new URLResolver([
     '#notes/get/(\d+)/$#' => ['Notes', 'get'],
+    '#notes/update/(\d+)/$#' => ['Notes', 'update'],
+    '#notes/delete/(\d+)/$#' => ['Notes', 'delete'],
+    '#notes/create/$#' => ['Notes', 'create'],
 ]);
 
 return $settings;

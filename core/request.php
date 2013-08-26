@@ -1,6 +1,8 @@
 <?php
 namespace Core;
 
+class InvalidRequestMethod extends \Exception {}
+
 class Request {
     protected $get;
     protected $post;
