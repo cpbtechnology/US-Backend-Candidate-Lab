@@ -25,19 +25,6 @@ class Notes extends \Core\Controller {
         ]);
     }
 
-    public function create() {
-        $this->requirePOST();
-        $user = $this->getUser();
-        $note = new Note();
-        $note->user_id = $user->id;
-        $note->title = $this->request->post['title'];
-        $note->description = $this->request->post['description'];
-        $note->save();
-        return new JSONResponse([
-            'id' => $note->id,
-        ]);
-    }
-
     public function update($id) {
         $this->requirePOST();
         $user = $this->getUser();
@@ -59,6 +46,19 @@ class Notes extends \Core\Controller {
         $note->delete();
         return new JSONResponse([
             'status' => 'success'
+        ]);
+    }
+
+    public function create() {
+        $this->requirePOST();
+        $user = $this->getUser();
+        $note = new Note();
+        $note->user_id = $user->id;
+        $note->title = $this->request->post['title'];
+        $note->description = $this->request->post['description'];
+        $note->save();
+        return new JSONResponse([
+            'id' => $note->id,
         ]);
     }
 

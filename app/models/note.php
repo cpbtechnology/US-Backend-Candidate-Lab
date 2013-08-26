@@ -29,4 +29,12 @@ class Note extends \Core\Model {
             ]);
         }
     }
+
+    public function delete() {
+        if (!$this->id)
+            throw new \Exception('This note was not saved yet, so it cannot be deleted');
+
+        $query = self::$db->prepare('DELETE FROM `notes` WHERE `id` = :id');
+        $query->execute([':id' => $this->id]);
+    }
 }
