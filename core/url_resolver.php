@@ -1,8 +1,6 @@
 <?php
 namespace Core;
 
-class Http404 extends \Exception {}
-
 class URLResolver {
     protected $patterns;
 
@@ -12,8 +10,10 @@ class URLResolver {
 
     public function resolve($url) {
         foreach ($this->patterns as $pattern => $data)
-            if (preg_match($pattern, $url, $matches))
-                return $data + [$matches];
+            if (preg_match($pattern, $url, $matches)) {
+                array_shift($matches);
+                return array_merge($data, [$matches]);
+            }
         throw new Http404();
     }
 }

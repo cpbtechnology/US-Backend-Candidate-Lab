@@ -1,4 +1,9 @@
 <?php
+namespace Core;
+
+class Http403 extends \Exception {}
+class Http404 extends \Exception {}
+
 class Response {
     protected $status = 200;
     protected $mime = 'text/html';
@@ -17,9 +22,20 @@ class Response {
         $this->content = $content;
     }
 
+    public function setHeader($header, $value) {
+        $this->headers[$header] = $value;
+    }
+
     public function __toString() {
-        foreach ($headers as $header)
-            header($header);
-        return $self->content;
+        foreach ($this->headers as $header => $value)
+            header("${header}: ${value}");
+        return $this->content;
+    }
+}
+
+class JSONResponse extends Response {
+    public function __construct($data) {
+        $this->content = json_encode($data);
+        $this->setMimeType('application/json');
     }
 }

@@ -7,11 +7,12 @@ class Request {
     protected $files;
     protected $method;
 
-    public function __construct() {
+    public function __construct($root_url) {
         $this->get = $_GET;
         $this->post = $_POST;
         $this->files = $_FILES;
         $this->method = $_SERVER['REQUEST_METHOD'];
+        $this->path = '/' . $_GET['_path'];
     }
 
     public function __get($var) {
