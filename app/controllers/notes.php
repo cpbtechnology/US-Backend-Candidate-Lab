@@ -16,11 +16,8 @@ use App\Models\User;
 class Notes extends \Core\Controller {
     public function get($id) {
         $user = $this->getUser();
-        $note = Note::get($id);
-        if (!$note)
-            throw new Http404;
-        if ($note->user_id != $user->id)
-            throw new Http403;
+        $note = $this->getNote($id);
+        $this->checkPermission($user, $note);
         return new JSONResponse([
             'id' => $note->id,
             'title' => $note->title,
@@ -44,11 +41,8 @@ class Notes extends \Core\Controller {
     public function update($id) {
         $this->requirePOST();
         $user = $this->getUser();
-        $note = Note::get($id);
-        if (!$note)
-            throw new Http404;
-        if ($note->user_id != $user->id)
-            throw new Http403;
+        $note = $this->getNote($id);
+        $this->checkPermission($user, $note);
         $note->title = $this->request->post['title'];
         $note->description = $this->request->post['description'];
         $note->save();
@@ -60,11 +54,8 @@ class Notes extends \Core\Controller {
     public function delete($id) {
         $this->requirePOST();
         $user = $this->getUser();
-        $note = Note::get($id);
-        if (!$note)
-            throw new Http404;
-        if ($note->user_id != $user->id)
-            throw new Http403;
+        $note = $this->getNote($id);
+        $this->checkPermission($user, $note);
         $note->delete();
         return new JSONResponse([
             'status' => 'success'
@@ -76,5 +67,17 @@ class Notes extends \Core\Controller {
         if (!$user)
             throw new Http403;
         return $user;
+    }
+
+    protected function getNote($id) {
+        $note = Note::get($id);
+        if (!$note)
+            throw new Http404;
+        return $note;
+    }
+
+    protected function checkPermission($user, $note) {
+        if ($note->user_id != $user->id)
+            throw new Http403;
     }
 }
