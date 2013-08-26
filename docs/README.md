@@ -20,4 +20,5 @@ The general idea was to build a simple framework to handle JSON APIs. The struct
 If I had more time, I'd do the following things:
 1. Add an autoloader for classes,
 2. Add more abstraction to Model class (getting/saving data should be moved to parent class),
-3. Implement better login system (including possibility to use OpenAuth).
+3. Implement better login system (including possibility to use OpenAuth),
+4. Add unit tests.
