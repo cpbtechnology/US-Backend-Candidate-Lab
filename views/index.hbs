@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>{{ title }}</h1>
+    <p>Welcome to {{ title }}</p>
+
+    <form action="/login" method="POST">
+      <input type="text" name="username" />
+      <input type="password" name="password" />
+
+      <button>Login</button>
+    </form>
+
+    {{#if status }}
+      <h2>{{ status }}</h2>
+      <a href="/logout">Logout</a>
+    {{/if}}
+  </body>
+</html>
