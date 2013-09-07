@@ -32,3 +32,20 @@ exports.saveNewNote = function(config) {
   .success(config.success)
   .error(config.error);
 };
+
+exports.updateNote = function(config) {
+  Note.update(
+    {title: config.title, description: config.description},
+    {id: config.id}
+  )
+  .success(config.success)
+  .error(config.error);
+}
+
+exports.deleteNote = function(config) {
+  Note.destroy({
+    id: config.id
+  })
+  .success(config.success)
+  .error(config.error);
+}
