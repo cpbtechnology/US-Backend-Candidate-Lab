@@ -1,5 +1,5 @@
-var Sequelize = require('../config/seqConfig.js').Sequelize,
-    database = require('../config/seqConfig.js').database,
+var Sequelize = require('../config/sequelizeConfig.js').Sequelize,
+    database = require('../config/sequelizeConfig.js').database,
     User = require('./user.js');
 
 var NoteRecord = database.define('Note', {

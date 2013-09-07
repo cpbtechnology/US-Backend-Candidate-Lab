@@ -1,15 +1,17 @@
 var UserServices = require('../services/user.services.js'),
-  Passport = require('passport');
+  Passport = require('passport'),
+  check = require('validator').check,
+  sanitize = require('validator').sanitize;
 
+/*
+ * Create new user
+ */
 exports.create = function(req, res) {
-  var userName = req.body.username,
-    password = req.body.password;
+  var userName = sanitize(req.body.username).xss().trim(),
+    password = sanitize(req.body.password).xss().trim();
 
-  if (!userName) {
-    return res.json(400, {
-      message: 'Please provide a non-empty username'
-    });
-  }
+  check(userName).notEmpty();
+  check(password).len(4, 50);
 
   if (!password) {
     return res.json(400, {
@@ -33,6 +35,10 @@ exports.create = function(req, res) {
   })
 };
 
+
+/*
+ * Authenticate user - service provided by passport
+ */
 exports.login = function(req, res) {
   Passport.authenticate('local', function(err, user, info) {
     if (err) {
@@ -52,7 +58,7 @@ exports.login = function(req, res) {
     req.logIn(user, function(err) {
       if (err) {
         return res.json(403, {
-          message: 'Authenctiation error',
+          message: 'Authentication error',
           error: err
         });
       }

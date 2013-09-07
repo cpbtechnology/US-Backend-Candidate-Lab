@@ -1,5 +1,5 @@
-var Sequelize = require('../config/seqConfig.js').Sequelize,
-    database = require('../config/seqConfig.js').database,
+var Sequelize = require('../config/sequelizeConfig.js').Sequelize,
+    database = require('../config/sequelizeConfig.js').database,
     Note = require('./note.js'),
     bcrypt = require('bcrypt'),
     SALT_WORK_FACTOR = 10;
@@ -14,11 +14,13 @@ var User = database.define('User', {
     classMethods: {
       generateHash: function(value, callback) {
         bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
-
-          if (err) callback(err, null);
-
+          if (err) {
+            callback(err, null)
+          }
           bcrypt.hash(value, salt, function(err, hash) {
-            if(err) callback(err, null);
+            if (err) {
+              callback(err, null)
+            };
             callback(null, hash);
           });
         });
@@ -29,7 +31,9 @@ var User = database.define('User', {
         var that = this;
 
         bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-          if (err) return callback(err);
+          if (err) {
+            return callback(err);
+          }
           callback(null, isMatch);
         });
       }

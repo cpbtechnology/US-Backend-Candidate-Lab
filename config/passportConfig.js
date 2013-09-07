@@ -1,35 +1,41 @@
 var User = require('../models/user.js'),
     Passport = require('passport'),
-    LocalStrategy = require('passport-local').Strategy;
+    LocalStrategy = require('passport-local').Strategy,
+    check = require('validator').check,
+    sanitize = require('validator').sanitize;
 
 
 Passport.serializeUser(function (user, done) {
-  console.log('Serialize ID' + user.UserId);
   done(null, user.UserId);
 });
 
 Passport.deserializeUser(function(id, done) {
-  console.log('Deserialize ID' + id);
   User.find({where: {UserId: id}}).success(function(user) {
     done(null, user);
   }).error(function(error){
-    done('User doesnt exist', null);
+    done('User is not in the session', null);
   });
 });
 
 
 Passport.use(
   new LocalStrategy(function(name, password, done) {
-    console.log('Lookup user: ' + name + ' with pass ' + password)
+    name = sanitize(name).xss().trim();
+    password = sanitize(password).xss().trim();
+
+    check(name).notEmpty();
+    check(password).notEmpty();
+
     User
-      .find(
-        {where: {username: name}}
-      )
+      .find({
+        where: {
+          username: name
+        }
+      })
       .success(function(user) {
         if (!user) {
           return done(null, false, { message: 'Unknown user ' + name });
         }
-
         user.comparePassword(password, function(err, isMatch){
           if (err) {
             return done(err);
