@@ -1,16 +1,6 @@
 var UserServices = require('../services/user.services.js'),
   Passport = require('passport');
 
-/*
- * GET users listing.
- */
-
-exports.list = function(req, res) {
-  User.find(1);
-
-  res.send("respond with a resource");
-};
-
 exports.create = function(req, res) {
   var userName = req.body.username,
     password = req.body.password;
@@ -31,7 +21,11 @@ exports.create = function(req, res) {
     username: userName,
     password: password,
     success: function(User) {
-      return res.json(201, User);
+      return res.json(201, {
+        username: User.username,
+        createdAt: User.createdAt,
+        updatedAt: User.updatedAt,
+      });
     },
     error: function(Error) {
       return res.json(500, Error)
@@ -42,14 +36,14 @@ exports.create = function(req, res) {
 exports.login = function(req, res) {
   Passport.authenticate('local', function(err, user, info) {
     if (err) {
-      return res.json(401, {
+      return res.json(403, {
         message: 'Authentication error',
         error: err
       });
     }
 
     if (!user) {
-      return res.json(401, {
+      return res.json(403, {
         message: 'The user does not exist',
         error: info
       });
@@ -57,7 +51,7 @@ exports.login = function(req, res) {
 
     req.logIn(user, function(err) {
       if (err) {
-        return res.json(401, {
+        return res.json(403, {
           message: 'Authenctiation error',
           error: err
         });

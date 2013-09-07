@@ -17,15 +17,7 @@
     "mysql": "*",
     "passport": "~0.1.16",
     "passport-local": "~0.1.6",
-    "bcrypt": "~0.7.5"
-  },
-  "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-jshint": "~0.4.3",
-    "grunt-contrib-nodeunit": "~0.1.2",
-    "grunt-contrib-csslint": "~0.1.2",
-    "grunt-contrib-cssmin": "~0.6.0",
-    "grunt-contrib-uglify": "~0.2.0",
-    "grunt-contrib-clean": "~0.4.1"
+    "bcrypt": "~0.7.5",
+    "validator": "1.5.1"
   }
 }

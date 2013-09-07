@@ -4,13 +4,13 @@ var User = require('../models/user.js'),
 
 
 Passport.serializeUser(function (user, done) {
-  console.log('Serialize ID' + user.username);
-  done(null, user.username);
+  console.log('Serialize ID' + user.UserId);
+  done(null, user.UserId);
 });
 
 Passport.deserializeUser(function(id, done) {
   console.log('Deserialize ID' + id);
-  User.find(id).success(function(user) {
+  User.find({where: {UserId: id}}).success(function(user) {
     done(null, user);
   }).error(function(error){
     done('User doesnt exist', null);

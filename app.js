@@ -4,7 +4,6 @@
  */
 
 var express = require('express'),
-    routes = require('./routes'),
     user = require('./routes/user'),
     note = require('./routes/note'),
     passport = require('passport'),
@@ -22,7 +21,7 @@ function logErrors(err, req, res, next) {
 function errorHandler(err, req, res, next) {
   res.json(500, {
     message: 'Server cannot process requests at this moment',
-    { error: err }
+    error: err
   });
 }
 
@@ -55,7 +54,7 @@ app.configure('development', function() {
 app.post('/users/login', user.login);
 app.post('/users', user.create);
 
-app.get('/users', user.list);
+app.post('/users/notes', note.create);
 app.get('/users/notes', note.list);
 app.get('/users/notes/{id}', note.detail);
 

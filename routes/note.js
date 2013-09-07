@@ -1,11 +1,24 @@
-var User = require('../models/user.js');
-var Note = require('../models/note.js');
+var NoteServices = require('../services/note.services.js');
 
 /**
  * Note list
  */
 exports.list = function(req, res) {
-  res.send("respond with a resource");
+  var loggedUserId = req.session.passport.user;
+  if (!loggedUserId) {
+    res.json(401, {
+      message: 'Unauthorized access'
+    })
+  }
+  NoteServices.findAllNotes({
+    userId: loggedUserId,
+    success: function(notes) {
+      return res.json(200, notes);
+    },
+    error: function(error) {
+      return res.json(500, error);
+    }
+  })
 };
 
 /**
@@ -18,6 +31,22 @@ exports.detail = function(req, res) {
 /**
  * Save a note
  */
-exports.save = function(req, res) {
-  res.send("respond with a resource");
+exports.create = function(req, res) {
+  var loggedUserId = req.session.passport.user;
+  if (!loggedUserId) {
+    res.json(401, {
+      message: 'Unauthorized access'
+    })
+  }
+  NoteServices.saveNewNote({
+    userId: loggedUserId,
+    title: req.body.title,
+    description: req.body.description,
+    success: function(notes) {
+      return res.json(201, notes);
+    },
+    error: function(error) {
+      return res.json(500, error);
+    }
+  })
 };

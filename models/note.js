@@ -1,13 +1,12 @@
 var Sequelize = require('../config/seqConfig.js').Sequelize,
-    database = require('../config/seqConfig.js').database;
+    database = require('../config/seqConfig.js').database,
+    User = require('./user.js');
 
 var NoteRecord = database.define('Note', {
   id: {type: Sequelize.BIGINT, primaryKey: true, autoIncrement: true},
-  timestamp: {type: Sequelize.DATE, allowNull: false},
   title: {type: Sequelize.STRING, allowNull: false},
   description: {type: Sequelize.TEXT, allowNull: false}
 });
-
 
 NoteRecord.sync();
 

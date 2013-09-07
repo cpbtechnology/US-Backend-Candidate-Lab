@@ -6,6 +6,7 @@ var Sequelize = require('../config/seqConfig.js').Sequelize,
 
 
 var User = database.define('User', {
+    UserId: {type: Sequelize.INTEGER, unique: true, autoIncrement: true},
     username: {type: Sequelize.STRING, primaryKey: true},
     password: {type: Sequelize.STRING, allowNull: false}
   },
@@ -37,6 +38,7 @@ var User = database.define('User', {
 );
 
 User.hasMany(Note, {as: 'notes'});
+Note.belongsTo(User);
 
 User.sync();
 
