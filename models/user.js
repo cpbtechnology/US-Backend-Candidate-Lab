@@ -15,12 +15,12 @@ var User = database.define('User', {
       generateHash: function(value, callback) {
         bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
           if (err) {
-            callback(err, null)
+            callback(err, null);
           }
           bcrypt.hash(value, salt, function(err, hash) {
             if (err) {
-              callback(err, null)
-            };
+              callback(err, null);
+            }
             callback(null, hash);
           });
         });

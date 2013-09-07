@@ -32,7 +32,7 @@ exports.list = function(req, res) {
     error: function(error) {
       return res.json(500, error);
     }
-  })
+  });
 };
 
 /**
@@ -95,7 +95,7 @@ exports.create = function(req, res) {
     error: function(error) {
       return res.json(500, error);
     }
-  })
+  });
 };
 
 exports.update = function(req, res) {

@@ -26,13 +26,13 @@ exports.create = function(req, res) {
       return res.json(201, {
         username: User.username,
         createdAt: User.createdAt,
-        updatedAt: User.updatedAt,
+        updatedAt: User.updatedAt
       });
     },
     error: function(Error) {
-      return res.json(500, Error)
+      return res.json(500, Error);
     }
-  })
+  });
 };
 
 

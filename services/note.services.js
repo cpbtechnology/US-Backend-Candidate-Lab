@@ -40,7 +40,7 @@ exports.updateNote = function(config) {
   )
   .success(config.success)
   .error(config.error);
-}
+};
 
 exports.deleteNote = function(config) {
   Note.destroy({
@@ -48,4 +48,4 @@ exports.deleteNote = function(config) {
   })
   .success(config.success)
   .error(config.error);
-}
+};
