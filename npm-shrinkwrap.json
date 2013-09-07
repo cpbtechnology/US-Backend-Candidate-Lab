@@ -1,0 +1,163 @@
+{
+  "name": "Lab",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": {
+      "version": "3.1.0",
+      "dependencies": {
+        "connect": {
+          "version": "2.7.2",
+          "dependencies": {
+            "qs": {
+              "version": "0.5.1"
+            },
+            "formidable": {
+              "version": "1.0.11"
+            },
+            "bytes": {
+              "version": "0.1.0"
+            },
+            "pause": {
+              "version": "0.0.1"
+            }
+          }
+        },
+        "commander": {
+          "version": "0.6.1"
+        },
+        "range-parser": {
+          "version": "0.0.4"
+        },
+        "mkdirp": {
+          "version": "0.3.3"
+        },
+        "cookie": {
+          "version": "0.0.5"
+        },
+        "buffer-crc32": {
+          "version": "0.1.1"
+        },
+        "fresh": {
+          "version": "0.1.0"
+        },
+        "methods": {
+          "version": "0.0.1"
+        },
+        "send": {
+          "version": "0.1.0",
+          "dependencies": {
+            "mime": {
+              "version": "1.2.6"
+            }
+          }
+        },
+        "cookie-signature": {
+          "version": "0.0.1"
+        },
+        "debug": {
+          "version": "0.7.2"
+        }
+      }
+    },
+    "sequelize": {
+      "version": "2.0.0-beta.0",
+      "dependencies": {
+        "lodash": {
+          "version": "1.3.1"
+        },
+        "underscore.string": {
+          "version": "2.3.3"
+        },
+        "lingo": {
+          "version": "0.0.5"
+        },
+        "validator": {
+          "version": "1.5.1"
+        },
+        "moment": {
+          "version": "2.1.0"
+        },
+        "commander": {
+          "version": "2.0.0"
+        },
+        "dottie": {
+          "version": "0.0.8-0"
+        },
+        "toposort-class": {
+          "version": "0.2.1"
+        },
+        "generic-pool": {
+          "version": "2.0.4"
+        },
+        "promise": {
+          "version": "3.2.0"
+        },
+        "sql": {
+          "version": "0.26.0",
+          "dependencies": {
+            "sliced": {
+              "version": "0.0.5"
+            }
+          }
+        }
+      }
+    },
+    "sequelize-mysql": {
+      "version": "2.0.0-beta.0",
+      "dependencies": {
+        "mysql": {
+          "version": "2.0.0-alpha7",
+          "dependencies": {
+            "require-all": {
+              "version": "0.0.3"
+            },
+            "bignumber.js": {
+              "version": "1.0.1"
+            }
+          }
+        }
+      }
+    },
+    "mysql": {
+      "version": "2.0.0-alpha9",
+      "dependencies": {
+        "require-all": {
+          "version": "0.0.3"
+        },
+        "bignumber.js": {
+          "version": "1.0.1"
+        }
+      }
+    },
+    "passport": {
+      "version": "0.1.17",
+      "dependencies": {
+        "pkginfo": {
+          "version": "0.2.3"
+        },
+        "pause": {
+          "version": "0.0.1"
+        }
+      }
+    },
+    "passport-local": {
+      "version": "0.1.6",
+      "dependencies": {
+        "pkginfo": {
+          "version": "0.2.3"
+        }
+      }
+    },
+    "bcrypt": {
+      "version": "0.7.7",
+      "dependencies": {
+        "bindings": {
+          "version": "1.0.0"
+        }
+      }
+    },
+    "validator": {
+      "version": "1.5.1"
+    }
+  }
+}

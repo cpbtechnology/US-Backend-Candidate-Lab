@@ -83,7 +83,7 @@ exports.create = function(req, res) {
   title = sanitize(title).xss().trim();
 
   check(description).notEmpty();
-  check(tilte).notEmpty();
+  check(title).notEmpty();
 
   NoteServices.saveNewNote({
     userId: loggedUserId,

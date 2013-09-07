@@ -4,7 +4,7 @@
   "description": "Lab demo application",
   "private": true,
   "scripts": {
-    "start": "node app"
+    "start": "node server"
   },
   "repository": {
     "type": "git",
