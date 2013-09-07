@@ -52,8 +52,6 @@ app.configure('development', function() {
   app.use(express.errorHandler());
 });
 
-app.get('/', routes.index);
-
 app.post('/users/login', user.login);
 app.post('/users', user.create);
 
