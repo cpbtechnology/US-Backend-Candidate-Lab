@@ -1,4 +1,4 @@
-var NoteServices = require('../services/note.services.js'),
+var NoteServices = require('../services/note.js'),
   check = require('validator').check,
   sanitize = require('validator').sanitize;
 

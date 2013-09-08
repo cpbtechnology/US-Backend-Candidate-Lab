@@ -1,4 +1,4 @@
-var UserServices = require('../services/user.services.js'),
+var UserServices = require('../services/user.js'),
   Passport = require('passport'),
   check = require('validator').check,
   sanitize = require('validator').sanitize;
