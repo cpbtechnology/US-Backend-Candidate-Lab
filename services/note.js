@@ -36,7 +36,7 @@ exports.saveNewNote = function(config) {
 exports.updateNote = function(config) {
   Note.update(
     {title: config.title, description: config.description},
-    {id: config.id}
+    {id: config.id, UserId: config.userId}
   )
   .success(config.success)
   .error(config.error);
@@ -44,7 +44,7 @@ exports.updateNote = function(config) {
 
 exports.deleteNote = function(config) {
   Note.destroy({
-    id: config.id
+    id: config.id, UserId: config.userId
   })
   .success(config.success)
   .error(config.error);

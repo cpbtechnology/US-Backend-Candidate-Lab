@@ -140,6 +140,7 @@ exports.update = function(req, res) {
 
   NoteServices.updateNote({
     id: id,
+    userId: loggedUserId,
     title: title,
     description: description,
     success: function(note) {
@@ -172,6 +173,7 @@ exports.destroy = function(req, res) {
 
   NoteServices.deleteNote({
     id: id,
+    userId: loggedUserId,
     success: function(note) {
       return res.json(204, []);
     },
