@@ -48,7 +48,7 @@ exports.detail = function(req, res) {
     return res.json(400, {
       message: 'One of the parameters is invalid',
       error: e
-    })
+    });
   }
 
   if (!loggedUserId) {
@@ -96,7 +96,7 @@ exports.create = function(req, res) {
     return res.json(400, {
       message: 'One of the parameters is invalid',
       error: e
-    })
+    });
   }
 
   NoteServices.saveNewNote({
@@ -133,9 +133,9 @@ exports.update = function(req, res) {
     check(id).isInt();
   } catch(e) {
     return res.json(400, {
-      message: 'One of the parameters is invalid',
+      message: 'The ID for the note to be updated is not a number',
       error: e
-    })
+    });
   }
 
   NoteServices.updateNote({
@@ -165,9 +165,9 @@ exports.destroy = function(req, res) {
     check(id).isInt();
   } catch(e) {
     return res.json(400, {
-      message: 'One of the parameters is invalid',
+      message: 'The ID for the note to be deleted is not a number',
       error: e
-    })
+    });
   }
 
   NoteServices.deleteNote({
