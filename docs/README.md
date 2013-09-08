@@ -7,44 +7,44 @@ List of developed web services:
 Import API to Postman from: https://www.getpostman.com/collections/d0df7f91c54bfa38598a
 
 * Create user / register
-** URL: http://localhost:3000/users | http://lab-notes.aws.af.cm/users
-** Method: POST
-** Headers: Content-Type: application/json
-** Data: {"username": "UserName", "password": "PassWord12234"}
-** Returns 201 on success, 400 if data fails validation, or 500 otherwise
+ * URL: http://localhost:3000/users | http://lab-notes.aws.af.cm/users
+ * Method: POST
+ * Headers: Content-Type: application/json
+ * Data: {"username": "UserName", "password": "PassWord12234"}
+ * Returns 201 on success, 400 if data fails validation, or 500 otherwise
 
 * User authorization
-** URL: http://localhost:3000/users/login | http://lab-notes.aws.af.cm/users/login
-** Method: POST
-** Headers: Content-Type: application/json
-** Data: {"username": "john", "password": "1234"}
-** Returns 201 on success, 400 if data fails validation, or 500 otherwise
+ * URL: http://localhost:3000/users/login | http://lab-notes.aws.af.cm/users/login
+ * Method: POST
+ * Headers: Content-Type: application/json
+ * Data: {"username": "john", "password": "1234"}
+ * Returns 201 on success, 400 if data fails validation, or 500 otherwise
 
 * Create a new note
-** URL: http://localhost:3000/users/notes | http://lab-notes.aws.af.cm/users/notes
-** Method: POST
-** Headers: Content-Type: application/json
-** Data: {"title" : "Title", "description" : "Description"}
-** Returns 401 if unauthorized access, 201 on success, 400 if data fails validation, or 500 otherwise
+ * URL: http://localhost:3000/users/notes | http://lab-notes.aws.af.cm/users/notes
+ * Method: POST
+ * Headers: Content-Type: application/json
+ * Data: {"title" : "Title", "description" : "Description"}
+ * Returns 401 if unauthorized access, 201 on success, 400 if data fails validation, or 500 otherwise
 
 * Update a note
-** URL: http://localhost:3000/users/notes/1 | http://lab-notes.aws.af.cm/users/notes/1
-** Method: PUT
-** Headers: Content-Type: application/json
-** Data: {"title" : "Title", "description" : "Description"}
-** Returns 401 if unauthorized access, 201 on success, 400 if data fails validation, or 500 otherwise
+ * URL: http://localhost:3000/users/notes/1 | http://lab-notes.aws.af.cm/users/notes/1
+ * Method: PUT
+ * Headers: Content-Type: application/json
+ * Data: {"title" : "Title", "description" : "Description"}
+ * Returns 401 if unauthorized access, 201 on success, 400 if data fails validation, or 500 otherwise
 
 * Get a note
-** URL: http://localhost:3000/users/notes/1 | http://lab-notes.aws.af.cm/users/notes/1
-** Method: GET
-** Headers: Content-Type: application/json
-** Returns 200 on success, 401 if unathorized access, 400 if data fails validation, or 500 otherwise
+ * URL: http://localhost:3000/users/notes/1 | http://lab-notes.aws.af.cm/users/notes/1
+ * Method: GET
+ * Headers: Content-Type: application/json
+ * Returns 200 on success, 401 if unathorized access, 400 if data fails validation, or 500 otherwise
 
 * Get the list of notes
-** URL: http://localhost:3000/users/notes | http://lab-notes.aws.af.cm/users/notes
-** Method: GET
-** Headers: Content-Type: application/json
-** Returns 200 on success, 401 if unathorized access, or 500 otherwise
+ * URL: http://localhost:3000/users/notes | http://lab-notes.aws.af.cm/users/notes
+ * Method: GET
+ * Headers: Content-Type: application/json
+ * Returns 200 on success, 401 if unathorized access, or 500 otherwise
 
 ## Notes
 
