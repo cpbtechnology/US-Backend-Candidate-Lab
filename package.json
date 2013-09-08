@@ -1,23 +1,23 @@
 {
-  "name": "Lab",
-  "version": "0.0.1",
-  "description": "Lab demo application",
-  "private": true,
-  "scripts": {
-    "start": "node server"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/eabait/US-Backend-Candidate-Lab.git"
-  },
-  "dependencies": {
-    "express": "3.1.0",
-    "sequelize": "*",
-    "sequelize-mysql": "*",
-    "mysql": "*",
-    "passport": "~0.1.16",
-    "passport-local": "~0.1.6",
-    "bcrypt": "~0.7.5",
-    "validator": "1.5.1"
-  }
+	"name": "Lab",
+	"version": "0.0.1",
+	"description": "Lab demo application",
+	"private": true,
+	"scripts": {
+		"start": "node server"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/eabait/US-Backend-Candidate-Lab.git"
+	},
+	"dependencies": {
+		"express": "3.1.0",
+		"sequelize": "*",
+		"sequelize-mysql": "*",
+		"mysql": "*",
+		"passport": "~0.1.16",
+		"passport-local": "~0.1.6",
+		"bcrypt": "~0.7.5",
+		"validator": "1.5.1"
+	}
 }
