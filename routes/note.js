@@ -39,10 +39,17 @@ exports.list = function(req, res) {
  * Note details
  */
 exports.detail = function(req, res) {
-  var loggedUserId = getLoggedUser(req);
-  var noteId = req.params.id;
+  var loggedUserId = getLoggedUser(req),
+    noteId = req.params.id;
 
-  check(noteId).isInt();
+  try {
+    check(noteId).isInt();
+  } catch(e) {
+    return res.json(400, {
+      message: 'One of the parameters is invalid',
+      error: e
+    })
+  }
 
   if (!loggedUserId) {
     return res.json(401, {
@@ -82,8 +89,15 @@ exports.create = function(req, res) {
   description = sanitize(description).xss().trim();
   title = sanitize(title).xss().trim();
 
-  check(description).notEmpty();
-  check(title).notEmpty();
+  try {
+    check(description).notEmpty();
+    check(title).notEmpty();
+  } catch(e) {
+    return res.json(400, {
+      message: 'One of the parameters is invalid',
+      error: e
+    })
+  }
 
   NoteServices.saveNewNote({
     userId: loggedUserId,
@@ -113,9 +127,16 @@ exports.update = function(req, res) {
   description = sanitize(description).xss().trim();
   title = sanitize(title).xss().trim();
 
-  check(description).notEmpty();
-  check(title).notEmpty();
-  check(id).isInt();
+  try {
+    check(description).notEmpty();
+    check(title).notEmpty();
+    check(id).isInt();
+  } catch(e) {
+    return res.json(400, {
+      message: 'One of the parameters is invalid',
+      error: e
+    })
+  }
 
   NoteServices.updateNote({
     id: id,
@@ -140,7 +161,14 @@ exports.destroy = function(req, res) {
     });
   }
 
-  check(id).isInt();
+  try {
+    check(id).isInt();
+  } catch(e) {
+    return res.json(400, {
+      message: 'One of the parameters is invalid',
+      error: e
+    })
+  }
 
   NoteServices.deleteNote({
     id: id,
