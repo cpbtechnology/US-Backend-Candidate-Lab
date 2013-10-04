@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using NotesApi.Models;
+using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace NotesApiWeb.Controllers
 {
@@ -7,9 +9,14 @@ namespace NotesApiWeb.Controllers
 	{
 		public ActionResult Index()
 		{
-			ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-
+			ViewBag.Message = "Keep your thoughts organized";
 			return View();
+		}
+
+		public ActionResult NotesList(int page)
+		{
+			List<note> model = new List<note>();
+			return PartialView(model);
 		}
 
 	}
