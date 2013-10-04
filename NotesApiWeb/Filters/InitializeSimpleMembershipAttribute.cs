@@ -1,10 +1,10 @@
-﻿using System;
+﻿using NotesApiWeb.Models;
+using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Threading;
 using System.Web.Mvc;
 using WebMatrix.WebData;
-using NotesApiWeb.Models;
 
 namespace NotesApiWeb.Filters
 {
@@ -38,7 +38,7 @@ namespace NotesApiWeb.Filters
 						}
 					}
 
-					WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+					WebSecurity.InitializeDatabaseConnection("NotesApiDBContext", "UserProfile", "UserId", "UserName", autoCreateTables: true);
 				}
 				catch (Exception ex)
 				{
