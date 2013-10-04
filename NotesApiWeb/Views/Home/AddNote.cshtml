@@ -1,0 +1,23 @@
+﻿@model NotesApi.Models.note
+
+@using (Html.BeginForm()) {
+	@Html.AntiForgeryToken()
+	@Html.ValidationSummary(true)
+
+	<fieldset>
+		<legend>note</legend>
+
+		<div class="editor-field">
+			@Html.TextAreaFor(model => model.note1)
+			@Html.ValidationMessageFor(model => model.note1)
+		</div>
+
+		@Html.HiddenFor(model => model.lastModified)
+		@Html.HiddenFor(model => model.userToken)
+
+		<p>
+			<input type="button" value="Create" />
+			<input type="button" value="Cancel" />
+		</p>
+	</fieldset>
+}

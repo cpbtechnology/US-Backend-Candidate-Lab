@@ -175,8 +175,16 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Mapping\noteMap.cs" />
+    <Compile Include="Models\Mapping\UserProfileMap.cs" />
+    <Compile Include="Models\Mapping\webpages_MembershipMap.cs" />
+    <Compile Include="Models\Mapping\webpages_OAuthMembershipMap.cs" />
+    <Compile Include="Models\Mapping\webpages_RolesMap.cs" />
     <Compile Include="Models\note.cs" />
     <Compile Include="Models\NotesApiDBContext.cs" />
+    <Compile Include="Models\UserProfile.cs" />
+    <Compile Include="Models\webpages_Membership.cs" />
+    <Compile Include="Models\webpages_OAuthMembership.cs" />
+    <Compile Include="Models\webpages_Roles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -32,6 +32,7 @@
 			<section class="content-wrapper main-content clear-fix">
 				@RenderBody()
 			</section>
+			<div id="modal-container"></div>
 		</div>
 		<footer>
 			<div class="content-wrapper">
@@ -42,6 +43,7 @@
 		</footer>
 
 		@Scripts.Render("~/bundles/jquery")
+		@Scripts.Render("~/bundles/jqueryui")
 		@RenderSection("scripts", required: false)
 	</body>
 </html>

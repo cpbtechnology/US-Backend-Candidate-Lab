@@ -195,8 +195,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\BaseClient.cs" />
+    <Compile Include="Helpers\NotesApiContext.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Mapping\webpages_MembershipMap.cs" />
     <Compile Include="Models\note.cs" />
+    <Compile Include="Models\NotesApiDBContext.cs" />
+    <Compile Include="Models\webpages_Membership.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -266,6 +271,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
+    <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\jquery-2.0.3.js" />
     <Content Include="Scripts\jquery-2.0.3.min.js" />
     <Content Include="Scripts\jquery-2.0.3.min.map" />
@@ -319,6 +325,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Home\NotesList.cshtml" />
+    <Content Include="Views\Home\AddNote.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
