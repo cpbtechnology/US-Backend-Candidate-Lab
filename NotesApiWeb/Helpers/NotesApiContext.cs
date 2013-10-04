@@ -1,4 +1,5 @@
 ﻿using NotesApi.Models;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using WebMatrix.WebData;
@@ -32,7 +33,7 @@ namespace NotesApiWeb.Helpers
 			return client.Post<T>(model);
 		}
 
-		public static string Update<T>(string id, T model)
+		public static bool Update<T>(string id, T model)
 		{
 			BaseClient client = new BaseClient(baseApiUrl, string.Concat(typeof(T).Name, "s"), string.Concat("Put", typeof(T).Name));
 			client.apiName = WebSecurity.CurrentUserId.ToString();
@@ -48,7 +49,17 @@ namespace NotesApiWeb.Helpers
 			return client.Delete(id);
 		}
 
+		public static List<note> GetNotesByUId(string id)
+		{
+			BaseClient client = new BaseClient(baseApiUrl, "Notes", "GetNotes");
+			client.apiName = WebSecurity.CurrentUserId.ToString();
+			client.apiKey = db.webpages_Membership.Where(w => w.UserId == WebSecurity.CurrentUserId).FirstOrDefault().Password;
+			return client.Get<List<note>>(id);
+		}
+
 		#endregion Generic Methods
+
+
 
 	}
 }

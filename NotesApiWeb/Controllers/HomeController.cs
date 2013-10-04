@@ -21,7 +21,7 @@ namespace NotesApiWeb.Controllers
 
 		public ActionResult NotesList(int page)
 		{
-			List<note> model = new List<note>();
+			List<note> model = NotesApiContext.GetNotesByUId(WebSecurity.CurrentUserId.ToString());
 			return PartialView(model);
 		}
 
@@ -47,6 +47,32 @@ namespace NotesApiWeb.Controllers
 			{
 				return Json(new { success = false });
 			}
+		}
+
+		public ActionResult EditNote(int id)
+		{
+			note model = NotesApiContext.Get<note>(id.ToString());
+			return PartialView(model);
+		}
+
+		[HttpPost]
+		public ActionResult EditNote(note model)
+		{
+			bool result = NotesApiContext.Update<note>(model.noteId.ToString(), model);
+			if (result == true)
+			{
+				return Json(new { success = true });
+			}
+			else
+			{
+				return Json(new { success = false });
+			}
+		}
+
+		public ActionResult DeleteNote(int id)
+		{
+			NotesApiContext.Delete<note>(id.ToString());
+			return RedirectToAction("Index");
 		}
 
 	}

@@ -1,4 +1,5 @@
-﻿using NotesApi.Models;
+﻿using BusinessLMS.ActionFilters;
+using NotesApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,6 +11,7 @@ using System.Web.Http;
 
 namespace NotesApi.Controllers
 {
+	[BasicAuthentication]
 	public class NotesController : ApiController
 	{
 		private NotesApiDBContext db = new NotesApiDBContext();
@@ -21,9 +23,9 @@ namespace NotesApi.Controllers
 		}
 
 		// GET api/Notes/5
-		public IEnumerable<note> GetNotes(string userToken)
+		public IEnumerable<note> GetNotes(string id)
 		{
-			return db.notes.Where(n => n.userToken == userToken).AsEnumerable();
+			return db.notes.Where(n => n.userToken == id).AsEnumerable();
 		}
 
 		// GET api/Notes/5

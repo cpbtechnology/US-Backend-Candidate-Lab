@@ -77,7 +77,7 @@ namespace NotesApiWeb.Helpers
 			}
 		}
 
-		public string Put<T>(string id, T data)
+		public bool Put<T>(string id, T data)
 		{
 			using (HttpClient httpClient = NewHttpClient())
 			{
@@ -85,7 +85,7 @@ namespace NotesApiWeb.Helpers
 				requestMessage.Method = HttpMethod.Put;
 				requestMessage.Content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
 				HttpResponseMessage result = httpClient.PutAsync(String.Concat(_endpoint, "/", id), requestMessage.Content).Result;
-				return result.Content.ReadAsStringAsync().Result;
+				return result.IsSuccessStatusCode;
 			}
 		}
 
