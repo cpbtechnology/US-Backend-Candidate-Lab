@@ -1,0 +1,12 @@
+﻿table {
+	width: 100%;
+}
+
+.ui-button {
+	float: right;
+	margin: 10px;
+}
+
+#modal-container textarea {
+	width: 90%;
+}

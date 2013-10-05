@@ -1,0 +1,29 @@
+﻿@{
+	ViewBag.Title = "Notes Home Page";
+}
+@section featured {
+	<section class="featured">
+		<div class="content-wrapper">
+			<hgroup class="title">
+				<h1>@ViewBag.Title.</h1>
+				<h2>@ViewBag.Message</h2>
+			</hgroup>
+		</div>
+	</section>
+}
+
+<h3>Your Notes:</h3>
+<table>
+	<tr>
+		<th>
+			Note
+		</th>
+		<th>
+			When?
+		</th>
+		<th></th>
+	</tr>
+	@Html.Action("NotesList", "Home", new { page = 1})
+</table>
+
+<a href="javascript:addNote();" class="ui-button">Add Note</a>

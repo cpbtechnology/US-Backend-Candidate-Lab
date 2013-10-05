@@ -1,0 +1,18 @@
+﻿@model IEnumerable<NotesApi.Models.note>
+
+
+
+@foreach (var item in Model) {
+	<tr>
+		<td>
+			@Html.DisplayFor(modelItem => item.note1)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.lastModified)
+		</td>
+		<td>
+			<a href="javascript:editNote(@item.noteId);">Edit</a>
+			@Html.ActionLink("Delete", "DeleteNote", new { id=item.noteId })
+		</td>
+	</tr>
+}
