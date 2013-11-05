@@ -11,7 +11,7 @@ pids
 logs
 results
 
-
+data/
 node_modules/
 deploy/
 psd/
