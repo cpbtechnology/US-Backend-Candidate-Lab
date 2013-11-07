@@ -1,0 +1,91 @@
+{
+  "id": "2b52da82-cc1e-85b3-0cec-7308386a45a5",
+  "name": "Notes API",
+  "timestamp": 1383720676483,
+  "requests": [
+    {
+      "collectionId": "2b52da82-cc1e-85b3-0cec-7308386a45a5",
+      "id": "1ee948ab-d66e-0418-2981-702db5c79ed9",
+      "name": "Delete Note",
+      "description": "",
+      "url": "https://localhost:8080/api/notes/7",
+      "method": "DELETE",
+      "headers": "Authorization: Basic ZHVkZTpsZWJvd3NraQ==\n",
+      "data": "",
+      "dataMode": "raw",
+      "timestamp": 0,
+      "version": 2,
+      "time": 1383814849401
+    },
+    {
+      "collectionId": "2b52da82-cc1e-85b3-0cec-7308386a45a5",
+      "id": "201f0207-8914-803c-640d-7fb2ae2f88ba",
+      "name": "Create Note",
+      "description": "",
+      "url": "https://localhost:8080/api/notes",
+      "method": "PUT",
+      "headers": "Authorization: Basic ZHVkZTpsZWJvd3NraQ==\n",
+      "data": "{\n\t\"title\" : \"A new Note\"\n   \t,\"body\" : \"a new note by lebowski\"\n}",
+      "dataMode": "raw",
+      "timestamp": 0,
+      "version": 2,
+      "time": 1383808557201
+    },
+    {
+      "collectionId": "2b52da82-cc1e-85b3-0cec-7308386a45a5",
+      "id": "472883b7-e3f4-702e-d7ee-6e2d3c7050df",
+      "name": "Get User",
+      "description": "",
+      "url": "https://localhost:8080/api/user",
+      "method": "GET",
+      "headers": "Authorization: Basic ZHVkZTpsZWJvd3NraQ==\n",
+      "data": "{\n\t\"title\" : \"A new Note\"\n   \t,\"body\" : \"a new note by lebowski\"\n}",
+      "dataMode": "raw",
+      "timestamp": 0,
+      "version": 2,
+      "time": 1383809096658
+    },
+    {
+      "collectionId": "2b52da82-cc1e-85b3-0cec-7308386a45a5",
+      "id": "72b1e6d1-efde-0d7f-2df0-7ecaa7d1b3a1",
+      "name": "Get Note",
+      "description": "",
+      "url": "https://localhost:8080/api/notes/7",
+      "method": "GET",
+      "headers": "Authorization: Basic ZHVkZTpsZWJvd3NraQ==\n",
+      "data": "",
+      "dataMode": "raw",
+      "timestamp": 0,
+      "version": 2,
+      "time": 1383815063798
+    },
+    {
+      "collectionId": "2b52da82-cc1e-85b3-0cec-7308386a45a5",
+      "id": "ad731dce-7fe8-2c24-fcfe-88b76ce9cf97",
+      "name": "Update Note",
+      "description": "",
+      "url": "https://localhost:8080/api/notes/7",
+      "method": "POST",
+      "headers": "Authorization: Basic ZHVkZTpsZWJvd3NraQ==\n",
+      "data": "{\n\t\"title\" : \"A new Note IS HERE 3!\"\n   \t,\"body\" : \"a new note by lebowski\"\n}",
+      "dataMode": "raw",
+      "timestamp": 0,
+      "version": 2,
+      "time": 1383814717872
+    },
+    {
+      "collectionId": "2b52da82-cc1e-85b3-0cec-7308386a45a5",
+      "id": "bbd3d92b-c2af-4cf4-f49c-6095a849fcfe",
+      "name": "Create User",
+      "description": "",
+      "url": "https://localhost:8080/api/user",
+      "method": "PUT",
+      "headers": "",
+      "data": "{\n  \"email\" : \"dude@lebowski\",\n  \"username\" : \"dude\",\n  \"password\" : \"lebowski\" \n}",
+      "dataMode": "raw",
+      "timestamp": 0,
+      "version": 2,
+      "time": 1383811940790
+    }
+  ]
+}
