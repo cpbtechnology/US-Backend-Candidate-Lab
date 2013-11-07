@@ -133,6 +133,8 @@ run server
 
 
 
+# Test
 
+I am not very familiar with the ins and outs of unit testing but I did save out a collection for postman. It is called tests.json and you can just import them into it through the UI.
 
 
