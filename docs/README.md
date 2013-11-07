@@ -1,10 +1,12 @@
 # CP+B Backend Candidate Lab
 
-## Documentation
+# Documentation
 
-Notes API
+## Notes API
 
-Create User
+
+###Create User
+
 PUT /api/user
 
 Body:
@@ -18,16 +20,20 @@ Returns 201
 
 =================
 
-Get User
+###Get User
+
 Basic Auth
+
 GET /api/user
 
 Returns 200
 
 =================
 
-Create Note
+###Create Note
+
 Basic Auth
+
 PUT /api/notes
 
 Body:
@@ -40,16 +46,20 @@ Returns 201
 
 =================
 
-Get Note(s)
+###Get Note(s)
+
 Basic Auth
+
 GET /api/notes(/:id)
 
 Returns 200
 
 =================
 
-Update Note
+###Update Note
+
 Basic Auth
+
 POST /api/notes/:id
 
 Body:
@@ -62,8 +72,10 @@ Returns 204
 
 =================
 
-Delete Note
+###Delete Note
+
 Basic Auth
+
 GET /api/notes/:id
 
 Returns 204
@@ -71,7 +83,7 @@ Returns 204
 =================
 
 
-## Notes
+# Notes
 
 I decided to make this using 3 frameworks that I have never used before and to use some methodology that I needed to research. Libraries like passport will make it very easy to build upon with new authentication strategies which seem to be quite useful these days when we have all sorts of social media outlets people like to use. Mongoose is a pretty neat ODM library for mongo, however thanks to Mavericks it was a pain getting it to build and mongo to install. Finally I chose restify for the basic server framework since the idea was this to be purely an API I opted to have something as lean as possible.
 
@@ -79,28 +91,37 @@ In terms of current authentication, I feel that the user should reauth per reque
 
 
 
-## Setup
+# Setup
 
 Install MongoDB - http://www.mongodb.org/downloads
+
 Install node 0.10.21 - http://nodejs.org
 
 configure db.url field in package.js to match your mongodb server
 
 
-In project root (bash) 
+###In project root 
+
+install packages
 
     npm install
 
+make mongo db folder
+
     mkdir data/db
+
+give ownership to folder
 
     sudo chown `id -u` data/db
 
 
 
 
-## Run
+# Run 
 
-run mongo: (in project root)
+###In project root 
+
+run mongo
     
     mongod -dbpath data/db
 
