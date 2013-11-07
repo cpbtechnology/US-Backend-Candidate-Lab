@@ -70,7 +70,7 @@ var notesApi = (function () {
         model.connect("mongodb://localhost/notes");
         initAuth();
        
-        //_this.server.use(restify.authorizationParser());
+       
         _this.server.use(restify.dateParser());
         _this.server.use(restify.queryParser());
         _this.server.use(restify.jsonp());
