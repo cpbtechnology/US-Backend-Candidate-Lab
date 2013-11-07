@@ -11,7 +11,8 @@ module.exports = (function () {
         autoIncrement = require('mongoose-auto-increment'),
         db = mongoose.connection,
         crypto = require("crypto"),
-        restify = require("restify");
+        restify = require("restify"),
+        Schema = mongoose.Schema;
 
 
 
@@ -29,13 +30,13 @@ module.exports = (function () {
 
     var createSchema = function (c) {
 
-
         //Note
         var noteSchema = mongoose.Schema({
             title: String
             ,body: String
             ,updatedDate: {type:Date, default:Date.now}
             ,createdDate: Date
+            ,_author: {type:String, ref: 'User'}
         });
 
         //User
@@ -44,10 +45,11 @@ module.exports = (function () {
             ,username: String
             ,password: String
             ,createdDate: Date
+            ,notes: [{ type: Number , ref: 'Note' }]
             
         });
 
-        userSchema.methods.validatePassword = function (password) {
+        userSchema.methods.passValidate = function (password) {
             var hash = crypto.createHash('md5').update(password+this.createdDate.toISOString()).digest('hex');
             if(hash === this.password)
                 return true;
@@ -78,11 +80,10 @@ module.exports = (function () {
             if(userExists)
                 callback(new restify.InvalidArgumentError("Username Exists"));
             else {
-                var now = new Date().toISOString();
-    
-                
-                user.password = hash;
+                var now = new Date().toISOString();                
+                var hash = crypto.createHash('md5').update(user.password+now).digest('hex');                
                 var newUser = new User(user);
+                newUser.password = hash;
                 newUser.createdDate = now;
                 newUser.save(callback);
             }
@@ -94,37 +95,17 @@ module.exports = (function () {
 
     }
 
-    notesModels.authUser = function (userCred , callback) {
-
-        
-        
-        _this.getUser(userCred.username , function (err, user) {
-            if(err) {
-                callback(new restify.InternalError(err));
-            }else if(user) {                
-                if(user.validatePassword(userCred.password)) {
-                    callback(null, user);
-                }
-                else{
-                    callback(new restify.NotAuthorizedError("Access Denied"));
-                }
-
-            }else{
-                callback(new restify.ResourceNotFoundError("User Does Not Exist"))
-            }  
-        });
-
-
-    }
+ 
 
     notesModels.getUser = function (username, callback) { 
-        User.findOne({username:username}).lean().exec(function (err, user) {
-            if(err)
+        User.findOne({username:username}).populate("notes").exec(function (err, user) {
+            if(err){
                 callback("User Does Not Exist");
-            else if(user)
+            }else if(user) {
                 callback(null, user)
-            else
+            }else{
                 callback("User Does Not Exist");
+            }   
 
         });
 
@@ -134,33 +115,42 @@ module.exports = (function () {
 
     notesModels.createNote = function (data, user, callback) { 
 
-    
-        var note = new Note(data);
-        note.createdDate = new Date().toISOString();
-        note.save(callback);       
+        
 
+
+        var note = new Note(data)
+        note.createdDate = new Date().toISOString();
+        note._author = user.username;
+        note.save(function(err) {
+            if(err) {
+
+            }
+      
+            user.notes.push(note._id);
+            user.save(callback);       
+        });
+       
 
     };
 
     notesModels.getNote = function (id, user, callback) { 
 
-
+     
         if(id !== undefined) 
-            Note.findOne({_id : id}).lean().exec(callback);
+            Note.findOne({_id : id, _author: user.username}).lean().exec(callback);
         else
-            Note.find().lean().exec(callback);
+            callback(null, user.notes);
 
     };
 
-    notesModels.updateNote = function(id , data, user, callback) { 
-       
-        Note.update({ _id: id} , data, callback);
-
+    notesModels.updateNote = function(id , data, user, callback) {        
+        data.updatedDate = new Date().toISOString();
+        Note.findOneAndUpdate({_id : id, _author: user.username}, data).lean().exec(callback);
     };
 
     notesModels.delNote = function(id, user, callback) {
 
-        Note.remove({_id:id} , callback);
+        Note.findOneAndRemove({_id:id, _author:user.username} , callback);
     };
 
 
