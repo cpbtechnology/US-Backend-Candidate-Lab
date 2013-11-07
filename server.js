@@ -67,7 +67,7 @@ var notesApi = (function () {
 
     notesApi.start = function() {
         
-        model.connect("mongodb://localhost/notes");
+        model.connect(pkg.db.url);
         initAuth();
        
        
@@ -111,7 +111,6 @@ var notesApi = (function () {
                 if(err){
                     return next(err);
                 }else{
-                    console.log("send");
                     res.send(201);
 
                 }
