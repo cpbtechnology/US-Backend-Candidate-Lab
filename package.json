@@ -18,6 +18,9 @@
   "scripts": {
     "start": "node server.js"
   },
+  "dbUrl" :{
+    "url" : "mongodb://localhost/notes"
+  },
   "description": "",
   "main": "server.js",
   "repository": {
