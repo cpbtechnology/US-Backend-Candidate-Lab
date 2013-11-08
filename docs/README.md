@@ -89,6 +89,7 @@ I decided to make this using 3 frameworks that I have never used before and to u
 
 In terms of current authentication, I feel that the user should reauth per request when connecting to an API. I wouldn't argue that basic auth is the most secure way to do this. I weighed using challange/request strategies but opted to use a self-signed SSL cert since I think using SSL has the most impact on http security. Ideally I would implement service based auth with FB or Twitter. Passport even has a custom OAuth implementation to generate your own tokens to pass around (probably most secure way) to authenticate users.
 
+###I noticed that my commits are coming from two accounts. I think it may have something to do with my rsa keys on various machines. 
 
 
 # Setup
