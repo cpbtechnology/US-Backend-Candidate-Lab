@@ -7,7 +7,7 @@
 
 ###Create User
 
-PUT /api/user
+HTTPS PUT /api/user
 
 Body:
 {
@@ -24,7 +24,7 @@ Returns 201
 
 Basic Auth
 
-GET /api/user
+HTTPS GET /api/user
 
 Returns 200
 
@@ -34,7 +34,7 @@ Returns 200
 
 Basic Auth
 
-PUT /api/notes
+HTTPS PUT /api/notes
 
 Body:
 {
@@ -50,7 +50,7 @@ Returns 201
 
 Basic Auth
 
-GET /api/notes(/:id)
+HTTPS GET /api/notes(/:id)
 
 Returns 200
 
@@ -60,7 +60,7 @@ Returns 200
 
 Basic Auth
 
-POST /api/notes/:id
+HTTPS POST /api/notes/:id
 
 Body:
 {
@@ -74,7 +74,7 @@ Returns 204
 
 ###Delete Note
 
-Basic Auth
+HTTPS Basic Auth
 
 GET /api/notes/:id
 
