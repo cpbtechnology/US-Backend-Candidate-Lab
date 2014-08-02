@@ -4,6 +4,27 @@
 
 Place any related documentation in this folder.
 
-## Notes
+## Completed Tasks
+- User can register / login / logout
+- User can CRUD notes
+- Functional tests
 
-Use this area to communicate any thought processes, ideas, or challenges you encountered.  If you had more time, what would you enhance or do differently?
+## Enhancments
+- Added Bearer Token support ( oAuth2 )
+- Added CORS support ( required by API's )
+- Added Logs and Audit reports 
+
+## Incomplete Tasks
+- API Documentation, would normally use auto-gen documents plugin. Routes defined in `src/server.js`
+
+## Requirements
+NodeJS >= 10.*
+NPM Packages - `npm install -g gulp mocha chai`
+MongoDb
+
+## Run Tests
+`$ gulp test mocha.test`
+
+## Start Local Server
+`$ gulp serve`
+
