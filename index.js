@@ -5,7 +5,7 @@ var CONFIG = require('config')
 // Database
 // ----------------------------------------------------------------------------
 if( !mongoose.connection.readyState ){
-  mongoose.connect( 'mongodb://localhost/meelocal-api-dev', function( err ){
+  mongoose.connect( 'mongodb://localhost/cpb-api-dev', function( err ){
     if( err ){
       console.log('Unable to connect to Mongo!', err );
       process.exit(1);
