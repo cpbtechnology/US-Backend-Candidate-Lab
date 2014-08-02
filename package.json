@@ -1,0 +1,41 @@
+{
+  "name": "cpb-api",
+  "description": "",
+  "version": "0.0.1",
+  "main": "index.js",
+  "dependencies": {
+    "async": "^0.8.0",
+    "bcrypt": "^0.7.8",
+    "bunyan": "0.22.1",
+    "config": "^0.4.35",
+    "js-yaml": "^3.0.2",
+    "lodash": "~2.4.1",
+    "mongoose": "~3.8",
+    "mongoose-timestamp": "^0.2.1",
+    "moment": "2.5.1",
+    "restify": "~2.8"
+  },
+  "devDependencies": {
+    "chai": "1.9.0",
+    "chai-json-schema": "^1.1.0",
+    "coffee-script": "~1.6.3",
+    "gulp": "^3.6.2",
+    "gulp-coffee": "^1.4.3",
+    "gulp-mocha": "^0.4.1",
+    "gulp-nodemon": "^1.0.3",
+    "gulp-spawn": "^0.3.0",
+    "gulp-spawn-mocha": "^0.1.4",
+    "gulp-util": "^2.2.14",
+    "microtime": "^0.5.1",
+    "mocha": "~1.17.1",
+    "sinon": "^1.9.1",
+    "sinon-chai": "^2.5.0"
+  },
+  "scripts": {
+    "start": "node ./index.js",
+    "test": "mocha -R spec --compilers coffee:coffee-script test/*.coffee"
+  },
+  "repository": {
+    "type": "git"
+  }
+}

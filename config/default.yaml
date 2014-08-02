@@ -1,0 +1,4 @@
+
+Security:
+  saltWorkFactor: 10
+  tokenTTL: 604800 # 7 days
