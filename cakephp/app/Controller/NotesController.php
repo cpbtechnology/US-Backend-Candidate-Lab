@@ -14,7 +14,7 @@ class NotesController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator', 'Session');
+	public $components = array('Paginator', 'Session','RequestHandler');
 
 /**
  * index method
@@ -24,6 +24,7 @@ class NotesController extends AppController {
 	public function index() {
 		$this->Note->recursive = 0;
 		$this->set('notes', $this->Paginator->paginate());
+		$this->set('_serialize',array('notes'));
 	}
 
 /**

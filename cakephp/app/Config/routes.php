@@ -29,6 +29,12 @@
  * ...and connect the rest of 'Pages' controller's URLs.
  */
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
+	
+	/*
+	*Add Routes for REST
+	*/
+	Router::mapResources('notes');
+	Router::parseExtensions();
 
 /**
  * Load all plugin routes. See the CakePlugin documentation on
