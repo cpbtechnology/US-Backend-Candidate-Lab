@@ -15,11 +15,13 @@
 		<dd>
 			<?php echo h($note['Note']['description']); ?>
 			&nbsp;
-		</dd>
+		<!--
+</dd>
 		<dt><?php echo __('User'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($note['User']['id'], array('controller' => 'users', 'action' => 'view', $note['User']['id'])); ?>
 			&nbsp;
+-->
 		</dd>
 	</dl>
 </div>
