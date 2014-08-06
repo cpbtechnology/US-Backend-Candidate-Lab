@@ -22,20 +22,12 @@ class NotesController extends AppController {
  * @return void
  */
 	public function index() {
-		/*$this->Note->recursive = 0;
-		$this->set('notes', $this->Paginator->paginate());
-		$this->set('_serialize',array('notes'));*/
-
-		//Only show us Notes for this user
-		$this->set('notes',$this->Note->find('all', array(
-        'fields' => array('Note.id','Note.title','Note.description'),
-        'conditions' => array('user_id' => $this->Auth->user('id')),
-        
-        )));
-        $this->set('notes', $this->Paginator->paginate());
-		$this->set('_serialize', array('notes'));
-
 		
+		
+	$this->Note->recursive = 0;
+$this->set('notes', $this->Paginator->paginate(array('Note.user_id like'=>$this->Auth->user('id'))));
+		 $this->set('_serialize', array('notes'));
+
 	}
 
 /**
@@ -62,7 +54,7 @@ class NotesController extends AppController {
 	public function add() {
 		if ($this->request->is('post')) {
 		 //Add the user's id to each post
-        $this->request->data['Post']['user_id'] = $this->Auth->user('id');
+        $this->request->data['Note']['user_id'] = $this->Auth->user('id');
 			$this->Note->create();
 			if ($this->Note->save($this->request->data)) {
 				$this->Session->setFlash(__('The note has been saved.'));
@@ -99,8 +91,10 @@ class NotesController extends AppController {
 			$options = array('conditions' => array('Note.' . $this->Note->primaryKey => $id));
 			$this->request->data = $this->Note->find('first', $options);
 		}
-		$users = $this->Note->User->find('list');
+		/*
+$users = $this->Note->User->find('list');
 		$this->set(compact('users'));
+*/
 	}
 
 /**
