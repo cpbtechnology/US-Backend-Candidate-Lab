@@ -6,7 +6,7 @@
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('title'); ?></th>
 			<th><?php echo $this->Paginator->sort('description'); ?></th>
-			<th><?php echo $this->Paginator->sort('user_id'); ?></th>
+<!-- 			<th><?php echo $this->Paginator->sort('user_id'); ?></th> -->
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	</thead>
@@ -16,10 +16,12 @@
 		<td><?php echo h($note['Note']['id']); ?>&nbsp;</td>
 		<td><?php echo h($note['Note']['title']); ?>&nbsp;</td>
 		<td><?php echo h($note['Note']['description']); ?>&nbsp;</td>
-		<td>
+		<!--
+<td>
 			<?php echo $this->Html->link($note['User']['id'], array('controller' => 'users', 'action' => 'view', $note['User']['id'])); ?>
 		</td>
-		<td class="actions">
+		
+--><td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $note['Note']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $note['Note']['id'])); ?>
 			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $note['Note']['id']), array(), __('Are you sure you want to delete # %s?', $note['Note']['id'])); ?>

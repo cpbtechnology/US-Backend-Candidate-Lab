@@ -5,8 +5,18 @@
 	<?php
 		echo $this->Form->input('username');
 		echo $this->Form->input('password');
-		echo $this->Form->input('role');
-	?>
+		/*Default Non-Authenticated users to a normal user and not allow them to make themself an Admin 		 */
+		if($authUser){ 
+		 echo $this->Form->input('role', array(
+            'options' => array('admin' => 'Admin', 'noteuser' => 'Notes User')
+        ));
+        
+        
+        } else
+        {
+	       echo $this->Form->hidden('role', array('value' => 'noteuser'));
+        }
+        	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
 </div>

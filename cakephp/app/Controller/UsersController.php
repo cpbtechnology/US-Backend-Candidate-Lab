@@ -47,6 +47,7 @@ class UsersController extends AppController {
  * @return void
  */
 	public function add() {
+	$this->set('authUser', $this->Auth->user());
 		if ($this->request->is('post')) {
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
@@ -102,4 +103,35 @@ class UsersController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+	
+	 public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->allow('login','add','logout'); 
+    }
+     
+ public function login() {
+         
+        //if already logged-in, redirect
+        if($this->Session->check('Auth.User')){
+            $this->redirect(array('action' => 'index'));      
+        }
+         
+        // if we get the post information, try to authenticate
+        if ($this->request->is('post')) {
+            if ($this->Auth->login()) {
+                $this->Session->setFlash(__('Welcome, '. $this->Auth->user('username')));
+                $this->redirect($this->Auth->redirectUrl());
+            } else {
+                $this->Session->setFlash(__('Invalid username or password'));
+            }
+        } 
+    }
+ 
+    public function logout() {
+        $this->redirect($this->Auth->logout());
+    }
+ 
+	
+
+	
 }
