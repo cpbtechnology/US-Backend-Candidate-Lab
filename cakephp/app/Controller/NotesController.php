@@ -44,6 +44,7 @@ $this->set('notes', $this->Paginator->paginate(array('Note.user_id like'=>$this-
 		$options = array('conditions' => array('Note.' . $this->Note->primaryKey => $id));
 		
 		$this->set('note', $this->Note->find('first', $options));
+		 $this->set('_serialize', array('note'));
 	}
 
 /**
@@ -83,19 +84,29 @@ $this->set('notes', $this->Paginator->paginate(array('Note.user_id like'=>$this-
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Note->save($this->request->data)) {
 				$this->Session->setFlash(__('The note has been saved.'));
+				 $message = 'Saved';
 				return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The note could not be saved. Please, try again.'));
+				  $message = 'Error';
 			}
+		$this->set(array(
+            'message' => $message,
+            '_serialize' => array('message')
+        ));
+    
+
 		} else {
 			$options = array('conditions' => array('Note.' . $this->Note->primaryKey => $id));
 			$this->request->data = $this->Note->find('first', $options);
+			// $this->set('_serialize', array('note'));
 		}
 		/*
 $users = $this->Note->User->find('list');
 		$this->set(compact('users'));
-*/
-	}
+		
+		*/
+			}
 
 /**
  * delete method

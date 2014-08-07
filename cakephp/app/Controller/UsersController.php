@@ -14,7 +14,7 @@ class UsersController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator', 'Session');
+	public $components = array('Paginator', 'Session','RequestHandler');
 
 /**
  * index method
@@ -130,7 +130,32 @@ class UsersController extends AppController {
     public function logout() {
         $this->redirect($this->Auth->logout());
     }
- 
+    
+    /*
+    *Convenience method for Apps
+    *Allows us to check the credentials.  If auth suceeds we return the User ID and the UserName
+    *If Auth fails it sends back a message as such
+    */
+   	public function confirm() {
+	if ($this->Auth->login()) {
+	
+		if (!$this->User->exists($this->Auth->user('id'))) {
+			throw new NotFoundException(__('Invalid user'));
+		}
+		$options = array('conditions' => array('User.' . $this->User->primaryKey => $this->Auth->user('id')),
+		'fields' => array('User.id', 'User.username'),
+		 'recursive' => 0,
+		
+		);
+		
+		
+		$this->set('user', $this->User->find('first', $options));
+		 $this->set('_serialize', array('user'));
+		 }
+		 else{
+			 throw new NotFoundException(__('Invalid Credentials'));
+		 }
+	} 
 	
 
 	

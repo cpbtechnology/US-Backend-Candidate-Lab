@@ -40,7 +40,7 @@ class AppController extends Controller {
 		'DebugKit.Toolbar',
 		'RequestHandler',
 		'Session',
-		'Security',
+	
         'Auth' => array(
             'loginRedirect' => array('controller' => 'users', 'action' => 'index'),
             'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
@@ -59,19 +59,10 @@ class AppController extends Controller {
 	public function beforeFilter() {
         $this->Auth->allow('login');
         
-        /*
-//Force us to use SSL
-         $this->Security->blackHoleCallback = 'forceSSL';
-            $this->Security->requireSecure();
-           
-*/
+
        
     }
-    function forceSSL() {
-    //Redirect non-secure calls to SSL
-       // $this->redirect('https://' . env('SERVER_NAME') . $this->here);
-    }
-	
+
 	public function isAuthorized($user) {
 		// Here is where we should verify the role and give access based on role
 		

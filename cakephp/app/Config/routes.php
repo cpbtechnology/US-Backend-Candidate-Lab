@@ -39,6 +39,7 @@ Router::connect('/logout', array('controller' => 'users', 'action' => 'logout'))
 	*Add Routes for REST
 	*/
 	Router::mapResources('notes');
+		Router::mapResources('users');
 	Router::parseExtensions();
 
 /**

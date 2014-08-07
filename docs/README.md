@@ -21,6 +21,8 @@ I chose to spend time on the second part, encrypting the actual data in the data
 
 For SSL I feel like I could set that up if I had an extra 30 minutes.  I like not having it for demo purposes but I know the assignment called for security.  
 
+I'd also include more verification.  For now I haven't added much but it's pretty easy to add things like making sure a title and a description is always there (i.e. not null).  
+
 In terms of what else I'd like to do.  I wanted to create an iOS app that showed the API in action.  Unfortunately this started to take up a little more time then I had to spend on it.  If I had another hour or two I could probably have something rudimentary prototyped.  
 
 
