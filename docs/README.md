@@ -15,9 +15,12 @@ The assignment mentioned that PII might be stored in the notes.  This brings a f
 1) We need encrypted transport.
 2) We need to consider encrypting the actual data in the database.
 
-For encrypted transport CakePHP has a mechanism to require SSL.  It's a few extra settings.  I chose to spend time on the second part, encrypting the actual data in the database.  Which I was succesfull during some testing.  However I couldn't decrypt.  Then when I got encrypt and decrypt to work it would only do it for html and json views...If I had more time I'd out to the CakePHP development team to solve this difinitevly.  
+For encrypted transport CakePHP has a mechanism to require SSL.  It's a few lines of code that I've commented out for now.  SSL requires additional server configuration and I wanted to more focus on the API then on the server architecture.  You can see it commented out in the AppController.php's beforeFilter() function.
+ 
+I chose to spend time on the second part, encrypting the actual data in the database.  Which I was succesfull during some testing.  However I couldn't decrypt.  Then when I got encrypt and decrypt to work it would only do it for html and json views...If I had more time I'd out to the CakePHP development team to solve this definitely.  
 
-For SSL I feel like I could set that up if I had an extra 30 minutes.  I like not having it for demo purposes but I know the assignment called for securty.  
+For SSL I feel like I could set that up if I had an extra 30 minutes.  I like not having it for demo purposes but I know the assignment called for security.  
 
-In terms of what else I'd like to do.  I wanted to create an iOS app that showed the API in action.  Unfortuantly this started to take up a little more time then I had to spend on it.  If I had another hour or two I could probably have something rudimentary prototyped.  
+In terms of what else I'd like to do.  I wanted to create an iOS app that showed the API in action.  Unfortunately this started to take up a little more time then I had to spend on it.  If I had another hour or two I could probably have something rudimentary prototyped.  
+
 
