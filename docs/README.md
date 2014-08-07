@@ -23,6 +23,8 @@ For SSL I feel like I could set that up if I had an extra 30 minutes.  I like no
 
 I'd also include more verification.  For now I haven't added much but it's pretty easy to add things like making sure a title and a description is always there (i.e. not null).  
 
-In terms of what else I'd like to do.  I wanted to create an iOS app that showed the API in action.  Unfortunately this started to take up a little more time then I had to spend on it.  If I had another hour or two I could probably have something rudimentary prototyped.  
+In terms of what else I'd like to do. You'll notice this file is updated...I decided to spend sometime today to create a quick iPhone app to test everything and demonstrate it works.  The app isn't perfect, for example the UI is more responsive then the feeds so you can move through out the app before some of the data has updated.  If I had more time I'd work through this issue.  
 
-
+For testing I also posted the code to
+http://104.131.225.142/cpbbackend/cakephp/
+You can user the username user3 with a pw of 123 or create your own.  

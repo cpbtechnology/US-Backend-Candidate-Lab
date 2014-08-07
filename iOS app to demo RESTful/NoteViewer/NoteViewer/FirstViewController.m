@@ -20,7 +20,7 @@
 @synthesize userNameString = _userNameString;
 @synthesize userPasswordString = _userPasswordString;
 @synthesize userIDString = _userIDString;
-NSString *const rootServerURL = @"localhost:8888/US-Backend-Candidate-Lab/cakephp/";
+NSString *const rootServerURL = @"104.131.225.142/cpbbackend/cakephp/";
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

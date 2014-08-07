@@ -25,12 +25,13 @@
 //@synthesize allNotesDictionary = _allNotesDictionary;
 @synthesize allNotesArray = _allNotesArray;
 
-NSString *const serverURL = @"localhost:8888/US-Backend-Candidate-Lab/cakephp/";
+NSString *const serverURL = @"104.131.225.142/cpbbackend/cakephp/";
 //NSString *const viewNotesURL = @"localhost:8888/US-Backend-Candidate-Lab/cakephp/notes/";
 
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    [self loadJSONAndTableArrays];
 }
 
 - (void)viewDidLoad

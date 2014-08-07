@@ -101,7 +101,7 @@
     
     NSLog(@"note saved");
     
-    NSString * serverString = [[NSString alloc]initWithFormat:@"http://%@:%@@localhost:8888/US-Backend-Candidate-Lab/cakephp/notes.json",_userNameString,_userPasswordString];
+    NSString * serverString = [[NSString alloc]initWithFormat:@"http://%@:%@@104.131.225.142/cpbbackend/cakephp/notes.json",_userNameString,_userPasswordString];
     
     
     // Note that the URL is the "action" URL parameter from the form.
