@@ -1,0 +1,535 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		208C22AB1990108000803B64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 208C22AA1990108000803B64 /* Foundation.framework */; };
+		208C22AD1990108000803B64 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 208C22AC1990108000803B64 /* CoreGraphics.framework */; };
+		208C22AF1990108000803B64 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 208C22AE1990108000803B64 /* UIKit.framework */; };
+		208C22B51990108000803B64 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 208C22B31990108000803B64 /* InfoPlist.strings */; };
+		208C22B71990108000803B64 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 208C22B61990108000803B64 /* main.m */; };
+		208C22BB1990108000803B64 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 208C22BA1990108000803B64 /* AppDelegate.m */; };
+		208C22BE1990108000803B64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 208C22BC1990108000803B64 /* Main.storyboard */; };
+		208C22C11990108000803B64 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 208C22C01990108000803B64 /* MasterViewController.m */; };
+		208C22C41990108000803B64 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 208C22C31990108000803B64 /* DetailViewController.m */; };
+		208C22C61990108000803B64 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 208C22C51990108000803B64 /* Images.xcassets */; };
+		208C22CD1990108000803B64 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 208C22CC1990108000803B64 /* XCTest.framework */; };
+		208C22CE1990108000803B64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 208C22AA1990108000803B64 /* Foundation.framework */; };
+		208C22CF1990108000803B64 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 208C22AE1990108000803B64 /* UIKit.framework */; };
+		208C22D71990108000803B64 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 208C22D51990108000803B64 /* InfoPlist.strings */; };
+		208C22D91990108000803B64 /* NoteViewerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 208C22D81990108000803B64 /* NoteViewerTests.m */; };
+		208C22E5199010E300803B64 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 208C22E4199010E300803B64 /* Reachability.m */; };
+		20B3D2D1199302F2006E7BBE /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B3D2D0199302F2006E7BBE /* FirstViewController.m */; };
+		20E9EED11993070300402746 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E9EED01993070300402746 /* LogInViewController.m */; };
+		20E9EED419941FA700402746 /* CreateNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E9EED319941FA700402746 /* CreateNoteViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		208C22D01990108000803B64 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 208C229F1990108000803B64 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 208C22A61990108000803B64;
+			remoteInfo = NoteViewer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		208C22A71990108000803B64 /* NoteViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoteViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		208C22AA1990108000803B64 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		208C22AC1990108000803B64 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		208C22AE1990108000803B64 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		208C22B21990108000803B64 /* NoteViewer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NoteViewer-Info.plist"; sourceTree = "<group>"; };
+		208C22B41990108000803B64 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		208C22B61990108000803B64 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		208C22B81990108000803B64 /* NoteViewer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NoteViewer-Prefix.pch"; sourceTree = "<group>"; };
+		208C22B91990108000803B64 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		208C22BA1990108000803B64 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		208C22BD1990108000803B64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		208C22BF1990108000803B64 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		208C22C01990108000803B64 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		208C22C21990108000803B64 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		208C22C31990108000803B64 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		208C22C51990108000803B64 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		208C22CB1990108000803B64 /* NoteViewerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NoteViewerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		208C22CC1990108000803B64 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		208C22D41990108000803B64 /* NoteViewerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NoteViewerTests-Info.plist"; sourceTree = "<group>"; };
+		208C22D61990108000803B64 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		208C22D81990108000803B64 /* NoteViewerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoteViewerTests.m; sourceTree = "<group>"; };
+		208C22E3199010E300803B64 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		208C22E4199010E300803B64 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		20B3D2CF199302F2006E7BBE /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		20B3D2D0199302F2006E7BBE /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		20E9EECF1993070300402746 /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
+		20E9EED01993070300402746 /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
+		20E9EED219941FA700402746 /* CreateNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateNoteViewController.h; sourceTree = "<group>"; };
+		20E9EED319941FA700402746 /* CreateNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateNoteViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		208C22A41990108000803B64 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				208C22AD1990108000803B64 /* CoreGraphics.framework in Frameworks */,
+				208C22AF1990108000803B64 /* UIKit.framework in Frameworks */,
+				208C22AB1990108000803B64 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		208C22C81990108000803B64 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				208C22CD1990108000803B64 /* XCTest.framework in Frameworks */,
+				208C22CF1990108000803B64 /* UIKit.framework in Frameworks */,
+				208C22CE1990108000803B64 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		208C229E1990108000803B64 = {
+			isa = PBXGroup;
+			children = (
+				208C22B01990108000803B64 /* NoteViewer */,
+				208C22D21990108000803B64 /* NoteViewerTests */,
+				208C22A91990108000803B64 /* Frameworks */,
+				208C22A81990108000803B64 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		208C22A81990108000803B64 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				208C22A71990108000803B64 /* NoteViewer.app */,
+				208C22CB1990108000803B64 /* NoteViewerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		208C22A91990108000803B64 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				208C22AA1990108000803B64 /* Foundation.framework */,
+				208C22AC1990108000803B64 /* CoreGraphics.framework */,
+				208C22AE1990108000803B64 /* UIKit.framework */,
+				208C22CC1990108000803B64 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		208C22B01990108000803B64 /* NoteViewer */ = {
+			isa = PBXGroup;
+			children = (
+				20B3D2CE1991B746006E7BBE /* Model */,
+				20B3D2CD1991B742006E7BBE /* View */,
+				20B3D2CC1991B73D006E7BBE /* Controller */,
+				208C22E2199010D400803B64 /* Reachability */,
+				208C22B91990108000803B64 /* AppDelegate.h */,
+				208C22BA1990108000803B64 /* AppDelegate.m */,
+				208C22C51990108000803B64 /* Images.xcassets */,
+				208C22B11990108000803B64 /* Supporting Files */,
+			);
+			path = NoteViewer;
+			sourceTree = "<group>";
+		};
+		208C22B11990108000803B64 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				208C22B21990108000803B64 /* NoteViewer-Info.plist */,
+				208C22B31990108000803B64 /* InfoPlist.strings */,
+				208C22B61990108000803B64 /* main.m */,
+				208C22B81990108000803B64 /* NoteViewer-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		208C22D21990108000803B64 /* NoteViewerTests */ = {
+			isa = PBXGroup;
+			children = (
+				208C22D81990108000803B64 /* NoteViewerTests.m */,
+				208C22D31990108000803B64 /* Supporting Files */,
+			);
+			path = NoteViewerTests;
+			sourceTree = "<group>";
+		};
+		208C22D31990108000803B64 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				208C22D41990108000803B64 /* NoteViewerTests-Info.plist */,
+				208C22D51990108000803B64 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		208C22E2199010D400803B64 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				208C22E3199010E300803B64 /* Reachability.h */,
+				208C22E4199010E300803B64 /* Reachability.m */,
+			);
+			name = Reachability;
+			sourceTree = "<group>";
+		};
+		20B3D2CC1991B73D006E7BBE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				20E9EED219941FA700402746 /* CreateNoteViewController.h */,
+				20E9EED319941FA700402746 /* CreateNoteViewController.m */,
+				20E9EECF1993070300402746 /* LogInViewController.h */,
+				20E9EED01993070300402746 /* LogInViewController.m */,
+				208C22BF1990108000803B64 /* MasterViewController.h */,
+				208C22C01990108000803B64 /* MasterViewController.m */,
+				208C22C21990108000803B64 /* DetailViewController.h */,
+				208C22C31990108000803B64 /* DetailViewController.m */,
+				20B3D2CF199302F2006E7BBE /* FirstViewController.h */,
+				20B3D2D0199302F2006E7BBE /* FirstViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		20B3D2CD1991B742006E7BBE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				208C22BC1990108000803B64 /* Main.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		20B3D2CE1991B746006E7BBE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		208C22A61990108000803B64 /* NoteViewer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 208C22DC1990108000803B64 /* Build configuration list for PBXNativeTarget "NoteViewer" */;
+			buildPhases = (
+				208C22A31990108000803B64 /* Sources */,
+				208C22A41990108000803B64 /* Frameworks */,
+				208C22A51990108000803B64 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NoteViewer;
+			productName = NoteViewer;
+			productReference = 208C22A71990108000803B64 /* NoteViewer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		208C22CA1990108000803B64 /* NoteViewerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 208C22DF1990108000803B64 /* Build configuration list for PBXNativeTarget "NoteViewerTests" */;
+			buildPhases = (
+				208C22C71990108000803B64 /* Sources */,
+				208C22C81990108000803B64 /* Frameworks */,
+				208C22C91990108000803B64 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				208C22D11990108000803B64 /* PBXTargetDependency */,
+			);
+			name = NoteViewerTests;
+			productName = NoteViewerTests;
+			productReference = 208C22CB1990108000803B64 /* NoteViewerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		208C229F1990108000803B64 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Evan Spielberg";
+				TargetAttributes = {
+					208C22CA1990108000803B64 = {
+						TestTargetID = 208C22A61990108000803B64;
+					};
+				};
+			};
+			buildConfigurationList = 208C22A21990108000803B64 /* Build configuration list for PBXProject "NoteViewer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 208C229E1990108000803B64;
+			productRefGroup = 208C22A81990108000803B64 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				208C22A61990108000803B64 /* NoteViewer */,
+				208C22CA1990108000803B64 /* NoteViewerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		208C22A51990108000803B64 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				208C22C61990108000803B64 /* Images.xcassets in Resources */,
+				208C22B51990108000803B64 /* InfoPlist.strings in Resources */,
+				208C22BE1990108000803B64 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		208C22C91990108000803B64 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				208C22D71990108000803B64 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		208C22A31990108000803B64 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20E9EED11993070300402746 /* LogInViewController.m in Sources */,
+				208C22BB1990108000803B64 /* AppDelegate.m in Sources */,
+				208C22C11990108000803B64 /* MasterViewController.m in Sources */,
+				20B3D2D1199302F2006E7BBE /* FirstViewController.m in Sources */,
+				208C22B71990108000803B64 /* main.m in Sources */,
+				208C22C41990108000803B64 /* DetailViewController.m in Sources */,
+				20E9EED419941FA700402746 /* CreateNoteViewController.m in Sources */,
+				208C22E5199010E300803B64 /* Reachability.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		208C22C71990108000803B64 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				208C22D91990108000803B64 /* NoteViewerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		208C22D11990108000803B64 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 208C22A61990108000803B64 /* NoteViewer */;
+			targetProxy = 208C22D01990108000803B64 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		208C22B31990108000803B64 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				208C22B41990108000803B64 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		208C22BC1990108000803B64 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				208C22BD1990108000803B64 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		208C22D51990108000803B64 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				208C22D61990108000803B64 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		208C22DA1990108000803B64 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		208C22DB1990108000803B64 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		208C22DD1990108000803B64 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NoteViewer/NoteViewer-Prefix.pch";
+				INFOPLIST_FILE = "NoteViewer/NoteViewer-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		208C22DE1990108000803B64 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NoteViewer/NoteViewer-Prefix.pch";
+				INFOPLIST_FILE = "NoteViewer/NoteViewer-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		208C22E01990108000803B64 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NoteViewer.app/NoteViewer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NoteViewer/NoteViewer-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "NoteViewerTests/NoteViewerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		208C22E11990108000803B64 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NoteViewer.app/NoteViewer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NoteViewer/NoteViewer-Prefix.pch";
+				INFOPLIST_FILE = "NoteViewerTests/NoteViewerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		208C22A21990108000803B64 /* Build configuration list for PBXProject "NoteViewer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				208C22DA1990108000803B64 /* Debug */,
+				208C22DB1990108000803B64 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		208C22DC1990108000803B64 /* Build configuration list for PBXNativeTarget "NoteViewer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				208C22DD1990108000803B64 /* Debug */,
+				208C22DE1990108000803B64 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		208C22DF1990108000803B64 /* Build configuration list for PBXNativeTarget "NoteViewerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				208C22E01990108000803B64 /* Debug */,
+				208C22E11990108000803B64 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 208C229F1990108000803B64 /* Project object */;
+}
