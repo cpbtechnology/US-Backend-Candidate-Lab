@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notesy.Core", "Notesy.Core.csproj", "{5DD8FFDA-34C8-4F81-8740-20E29BFC4E90}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notesy.Core", "notesy\Notesy.Core.csproj", "{5DD8FFDA-34C8-4F81-8740-20E29BFC4E90}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
