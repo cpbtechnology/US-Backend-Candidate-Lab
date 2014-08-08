@@ -52,13 +52,11 @@ NSString *const serverURL = @"104.131.225.142/cpbbackend/cakephp/";
    // _allNotesDictionary = [[NSDictionary alloc]init];
     _allNotesArray = [[NSArray alloc]init];
 
-
     //Pull JSON Listing all notes from the server
     [self loadJSONAndTableArrays];
 }
 - (void)viewWillAppear:(BOOL)animated{
     [self loadJSONAndTableArrays];
-    NSLog(@"view will appear");
 
 }
 
