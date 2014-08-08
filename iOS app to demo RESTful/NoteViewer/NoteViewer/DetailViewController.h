@@ -18,12 +18,13 @@
 @property (nonatomic,retain) NSString * userPasswordString;
 
 
+@property (weak, nonatomic) IBOutlet UITextView *noteTitleView;
 
 
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 - (IBAction)saveEditsButtonClicked:(UIButton *)sender;
 
-- (IBAction)deleteNoteButtonClicked:(id)sender;
+//- (IBAction)deleteNoteButtonClicked:(id)sender;
 
 -(void)setDictionary:(NSDictionary *) dict;
 @end

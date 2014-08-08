@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>8CAD0578-FA53-4241-A829-1343C63C3666</string>
+	<key>IDESourceControlProjectName</key>
+	<string>NoteViewer</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>7A33C134-D893-4CED-94E0-CA76DE7C2C3A</key>
+		<string>https://github.com/EncomCTO/US-Backend-Candidate-Lab.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>iOS app to demo RESTful/NoteViewer/NoteViewer.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>7A33C134-D893-4CED-94E0-CA76DE7C2C3A</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/EncomCTO/US-Backend-Candidate-Lab.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>7A33C134-D893-4CED-94E0-CA76DE7C2C3A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7A33C134-D893-4CED-94E0-CA76DE7C2C3A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>US-Backend-Candidate-Lab</string>
+		</dict>
+	</array>
+</dict>
+</plist>

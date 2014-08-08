@@ -111,9 +111,9 @@
     NSString *postString =[[NSString alloc]initWithFormat:@"data[Note][description]=%@&data[Note][title]=%@", self.noteDescriptionView.text,self.noteTitleView.text];
     NSData *data = [postString dataUsingEncoding:NSUTF8StringEncoding];
     [request setHTTPBody:data];
-    [request setValue:[NSString stringWithFormat:@"%u", [data length]] forHTTPHeaderField:@"Content-Length"];
+    [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)[data length]] forHTTPHeaderField:@"Content-Length"];
     [NSURLConnection connectionWithRequest:request delegate:self];
-    
+    NSLog(@"data = %@ ",data);
     
 
     

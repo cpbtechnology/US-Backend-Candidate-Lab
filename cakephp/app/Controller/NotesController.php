@@ -59,15 +59,25 @@ $this->set('notes', $this->Paginator->paginate(array('Note.user_id like'=>$this-
 			$this->Note->create();
 			if ($this->Note->save($this->request->data)) {
 				$this->Session->setFlash(__('The note has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				 $message = 'Saved';
+				 $this->set('message', $message);
+			 $this->set('_serialize', array('message'));
+				//return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The note could not be saved. Please, try again.'));
+				 $message = 'Error';
+				 $this->set('message', $message);
+			 		 $this->set('_serialize', array('message'));
+
 			}
+			
+		
 		}
 	/*
 	$users = $this->Note->User->find('list');
 		$this->set(compact('users'));
 */
+
 	}
 
 /**
@@ -85,7 +95,7 @@ $this->set('notes', $this->Paginator->paginate(array('Note.user_id like'=>$this-
 			if ($this->Note->save($this->request->data)) {
 				$this->Session->setFlash(__('The note has been saved.'));
 				 $message = 'Saved';
-				return $this->redirect(array('action' => 'index'));
+				//return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The note could not be saved. Please, try again.'));
 				  $message = 'Error';
@@ -123,10 +133,17 @@ $users = $this->Note->User->find('list');
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Note->delete()) {
 			$this->Session->setFlash(__('The note has been deleted.'));
+			$message = 'Deleted';
 		} else {
 			$this->Session->setFlash(__('The note could not be deleted. Please, try again.'));
+			$message = 'error';
 		}
-		return $this->redirect(array('action' => 'index'));
+			
+		
+		//return $this->redirect(array('action' => 'index'));
+		$this->set(array('message' => $message));
+
+            		 $this->set('_serialize', array('message'));
 	}
 	
 	/*
