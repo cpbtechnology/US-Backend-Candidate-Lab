@@ -7,8 +7,8 @@
     <ProjectGuid>{5DD8FFDA-34C8-4F81-8740-20E29BFC4E90}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>notesy</RootNamespace>
-    <AssemblyName>notesy</AssemblyName>
+    <RootNamespace>Notesy.Core</RootNamespace>
+    <AssemblyName>Notesy.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
