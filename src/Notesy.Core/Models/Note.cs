@@ -8,8 +8,13 @@ namespace Notesy.Core.Models
 {
     public class Note
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Contents { get; set; }
         public bool IsComplete { get; set; }
+
+        public Note()
+        {
+            IsComplete = false;  // this defaults to false but let's be explicit
+        }
     }
 }
