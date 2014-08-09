@@ -37,9 +37,19 @@ namespace Notesy.Api.Controllers
 
         // Note: This will be at something like: http://localhost:63185/note/save
         // TODO: since this is taking in a note model we'll need to make sure we're serializing the input properly before it hits the api
-        public ActionResult Save(Note input)
+
+        /// <summary>
+        /// Save a Note.
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="apikey"></param>
+        /// <param name="signature"></param>
+        /// <param name="callId"></param>
+        /// <returns></returns>
+        public ActionResult Save(Note input, string apikey = null, int? callId = null, string signature = null)
         {
-            // TODO: add auth stuff
+            if (!ValidateAuth(ToJsonString(input), apikey, signature)) { return new HttpNotFoundResult(); }
+
             var result = noteService.SaveNote(input);
 
             return Json(input, JsonRequestBehavior.AllowGet);
@@ -62,10 +72,21 @@ namespace Notesy.Api.Controllers
         }
 
 
-        private bool ValidateAuth()
+        private static bool ValidateAuth(string signatureToCheck, params string[] args)
         {
             // TODO: actual auth stuff
+            // 1) lookup api user
+            // 2) generate signature of inputs
+            // 3) compare generated signature to incomming signatue
+            // 4) if valid, return true, otherwise false - note there could be a number of other things to check here: api usage, incoming IP, etc.
+
             return true;
+        }
+
+        private static string ToJsonString(object input)
+        {
+            // here is where we'd serialize to the object out to a string containing a json object
+            return "";
         }
     }
 }
