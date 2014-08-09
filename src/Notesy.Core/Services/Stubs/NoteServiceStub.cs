@@ -15,20 +15,27 @@ namespace Notesy.Core.Services.Stubs
         {
             return new Note()
             {
-                Id = 102345,
+                Id = id,
                 Title = "Go to the Galaxy Game.",
                 Description = "Head over to Stub Hub Center in Carson, California for a lovely game of fútbol."
             };
         }
 
-        public Note SaveNote(Models.Note input)
+        public Note SaveNote(Note input)
         {
-            throw new NotImplementedException();
+            if (input.Id == 0) { input.Id = 456; }
+
+            return input;
         }
 
         public Note DeleteNote(int id)
         {
-            throw new NotImplementedException();
+            return new Note()
+            {
+                Id = id,
+                Title = "Go to the Galaxy Game.",
+                Description = "Head over to Stub Hub Center in Carson, California for a lovely game of fútbol."
+            };
         }
     }
 }

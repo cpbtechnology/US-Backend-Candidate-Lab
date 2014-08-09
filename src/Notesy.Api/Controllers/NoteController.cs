@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+using Notesy.Core.Models;
 using Notesy.Core.Services.Interfaces;
 
 namespace Notesy.Api.Controllers
@@ -35,11 +36,31 @@ namespace Notesy.Api.Controllers
         }
 
         // Note: This will be at something like: http://localhost:63185/note/save
-        public ActionResult Save()
+        // TODO: since this is taking in a note model we'll need to make sure we're serializing the input properly before it hits the api
+        public ActionResult Save(Note input)
         {
-            // TODO: real service call type things
-            return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+            // TODO: add auth stuff
+            var result = noteService.SaveNote(input);
+
+            return Json(input, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult Get(int id)
+        {
+            // TODO: add auth stuff
+            var result = noteService.GetNote(id);
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Delete(int id)
+        {
+            // TODO: add auth stuff
+            var result = noteService.DeleteNote(id);
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
 
         private bool ValidateAuth()
         {
