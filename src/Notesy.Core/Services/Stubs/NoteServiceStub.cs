@@ -16,7 +16,8 @@ namespace Notesy.Core.Services.Stubs
             return new Note()
             {
                 Id = 102345,
-                Contents = "Go to the Galaxy Game."
+                Title = "Go to the Galaxy Game.",
+                Description = "Head over to Stub Hub Center in Carson, California for lovely game of fútbol."
             };
         }
 
