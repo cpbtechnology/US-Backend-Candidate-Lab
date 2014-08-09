@@ -14,7 +14,7 @@ namespace Notesy.Tests.Core.Services
         [TestMethod]
         public void TestNoteInsert()
         {
-            var n = new Note() { ApiUserId = 1, Description = "Go to Santa Monica Pier and watch Dr. Who", Title = "Dr Who @ the beach." };
+            var n = new Note() { ApiUserId = 1, Description = "Go to Santa Monica Pier and watch Dr. Who", Title = string.Format("[{0}] Dr Who @ the beach.", DateTime.UtcNow.Ticks) };
 
             var result = svc.SaveNote(n);
 

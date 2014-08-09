@@ -67,7 +67,9 @@ namespace Notesy.Core.Services.Concrete
 	                            @Description,
 	                            @IsComplete,
 	                            @ApiUserId,
-	                            @DateCreated)";
+	                            @DateCreated)
+
+                            SELECT SCOPE_IDENTITY()";
 
             var update = @"UPDATE
 	                            [dbo].[Note]
@@ -86,9 +88,9 @@ namespace Notesy.Core.Services.Concrete
                 using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["NOTESY_CORE"].ConnectionString))
                 {
                     connection.Open();
-                    var result = connection.Execute(insert, new { Title = input.Title, Description = input.Description, IsComplete = input.IsComplete, ApiUserId = input.ApiUserId, DateCreated = input.DateCreated });
+                    var result = connection.Query<int>(insert, new { Title = input.Title, Description = input.Description, IsComplete = input.IsComplete, ApiUserId = input.ApiUserId, DateCreated = input.DateCreated });
                     output = input;
-                    // TODO: need to pop new ID into model and set to output;
+                    output.Id = result.First();
                 }
             }
             else
