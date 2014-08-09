@@ -97,3 +97,8 @@ At this point, we've reached a critical juncture in our journey.  If we were wor
 2. We could start talking to a dba type to start setting up our db and our sprocs, etc.
 3. We could also have a middle-tier dev start fleshing out the API calls and the auth and maybe even an ORM or something.
 4. Or we could scrap all that and just have a tech lead do it!  :boom:
+
+
+## Note #2:
+Here's the sample output from the get call as of this point:
+{"Id":1,"Title":"Go to the Galaxy Game.","Description":"Head over to Stub Hub Center in Carson, California for a lovely game of fútbol.","IsComplete":false}
