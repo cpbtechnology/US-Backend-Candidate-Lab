@@ -17,7 +17,7 @@ namespace Notesy.Core.Services.Stubs
             {
                 Id = 102345,
                 Title = "Go to the Galaxy Game.",
-                Description = "Head over to Stub Hub Center in Carson, California for lovely game of fútbol."
+                Description = "Head over to Stub Hub Center in Carson, California for a lovely game of fútbol."
             };
         }
 
