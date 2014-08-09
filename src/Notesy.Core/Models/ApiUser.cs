@@ -12,5 +12,6 @@ namespace Notesy.Core.Models
         public string Name { get; set; }
         public string ApiKey { get; set; }
         public string ApiSecret { get; set; }
+        public DateTime DateCreated { get; set; }
     }
 }

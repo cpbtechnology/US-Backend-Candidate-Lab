@@ -16,10 +16,12 @@ namespace Notesy.Core.Models
         public string Description { get; set; }
         public bool IsComplete { get; set; }
         public int ApiUserId { get; set; }   // this is where we could define an ORM relation ship... it'd be something more like: public ApiUser ApiUser { get; set; }, though it would need to be "glued" together with a true ORM 
+        public DateTime DateCreated { get; set; }
  
         public Note()
         {
             IsComplete = false;  // this defaults to false but let's be explicit
+            DateCreated = DateTime.UtcNow;
         }
     }
 }
