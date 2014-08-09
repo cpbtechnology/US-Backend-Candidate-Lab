@@ -120,6 +120,12 @@
     <Folder Include="Models\" />
     <Folder Include="Views\Note\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Notesy.Core\Notesy.Core.csproj">
+      <Project>{5dd8ffda-34c8-4f81-8740-20e29bfc4e90}</Project>
+      <Name>Notesy.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

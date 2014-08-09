@@ -11,6 +11,10 @@ namespace Notesy.Api.App_Start
     using Ninject;
     using Ninject.Web.Common;
 
+    using Notesy.Core.Services.Concrete;
+    using Notesy.Core.Services.Interfaces;
+    using Notesy.Core.Services.Stubs;
+
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -45,7 +49,11 @@ namespace Notesy.Api.App_Start
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
-                RegisterServices(kernel);
+                // Note: Look how easy that is to swap out the fake services (which might not hit a real db) for real ones.  I bet we could 
+                // even do that a config setting or db setting too (or not)!
+
+                //RegisterServices(kernel);
+                RegisterStubServices(kernel);
                 return kernel;
             }
             catch
@@ -61,6 +69,12 @@ namespace Notesy.Api.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-        }        
+            kernel.Bind<INoteService>().To<NoteService>().InRequestScope();
+        }
+
+        private static void RegisterStubServices(IKernel kernel)
+        {
+            kernel.Bind<INoteService>().To<NoteServiceStub>().InRequestScope();
+        }
     }
 }

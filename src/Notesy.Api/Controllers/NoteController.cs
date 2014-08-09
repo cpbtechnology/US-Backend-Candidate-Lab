@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+using Notesy.Core.Services.Interfaces;
+
 namespace Notesy.Api.Controllers
 {
     // So, there are a quite a few ways to setup an API.  For this one, since it's a quick-hitter, I'm just going to leverage a bunch of stuff
@@ -25,6 +27,13 @@ namespace Notesy.Api.Controllers
 
     public class NoteController : Controller
     {
+        private readonly INoteService noteService;
+
+        public NoteController(INoteService noteService)
+        {
+            this.noteService = noteService;
+        }
+
         // Note: This will be at something like: http://localhost:63185/note/save
         public ActionResult Save()
         {
