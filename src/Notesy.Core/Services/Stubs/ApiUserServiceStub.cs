@@ -41,5 +41,10 @@ namespace Notesy.Core.Services.Stubs
                 Name = "Famous Dave"
             };
         }
+
+        public ApiUser GetApiUserByApiKey(string apiKey)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

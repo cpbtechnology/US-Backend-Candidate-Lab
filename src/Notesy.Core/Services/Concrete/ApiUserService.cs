@@ -26,7 +26,9 @@ namespace Notesy.Core.Services.Concrete
 	                        ,[ApiSecret]
 	                        ,[DateCreated]
                         FROM 
-	                        [dbo].[ApiUser]";
+	                        [dbo].[ApiUser]
+                        WHERE
+                            [Id] = @Id";
 
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["NOTESY_CORE"].ConnectionString))
             {
@@ -104,6 +106,31 @@ namespace Notesy.Core.Services.Concrete
             {
                 connection.Open();
                 var result = connection.Execute(sql, new { Id = id });
+            }
+
+            return output;
+        }
+
+
+        public ApiUser GetApiUserByApiKey(string apiKey)
+        {
+            var output = new ApiUser();
+
+            var sql = @"SELECT 
+	                        [Id]
+	                        ,[Name]
+	                        ,[ApiKey]
+	                        ,[ApiSecret]
+	                        ,[DateCreated]
+                        FROM 
+	                        [dbo].[ApiUser]
+                        WHERE
+                            [ApiKey] = @ApiKey";
+
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["NOTESY_CORE"].ConnectionString))
+            {
+                connection.Open();
+                var result = connection.Execute(sql, new { ApiKey = apiKey });
             }
 
             return output;

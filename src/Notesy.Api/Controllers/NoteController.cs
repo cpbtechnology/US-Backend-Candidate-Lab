@@ -55,9 +55,20 @@ namespace Notesy.Api.Controllers
             return Json(input, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Get(int id)
+        public ActionResult Get(int id, string apikey = null, int? callId = null, string signature = null)
         {
-            // TODO: add auth stuff
+            // basic logic for this architecture (could be different)
+            // 1) validate the auth on the incoming request
+            // 2) next we need to get the api user by apikey (oops - we need to write that!)
+            // 3) next we need to get the note
+            // 4) last we need to check that the api user is the owner of this note
+
+            // obviously lots of decisions here... this might have been easier if we used
+            // an orm.  we also could have pushed this logic one level lower so we could
+            // reuse it.  this will be good for now though.
+
+            if (!ValidateAuth(id.ToString(), apikey, callId.Value.ToString(), signature)) { return new HttpNotFoundResult(); }
+
             var result = noteService.GetNote(id);
 
             return Json(result, JsonRequestBehavior.AllowGet);
