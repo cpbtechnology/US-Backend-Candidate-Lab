@@ -59,11 +59,17 @@ class UserController extends BaseController {
 
         $requestData = Input::all();
 
-        $validator = $this->validator->validate($requestData);
+        $validator = $this->validator->update($requestData, $user_id)->validate($requestData);
 
         if($validator->passes()) {
+            // is the user updating their password?
+            if (!empty($requestData['password'])) {
+                $requestData['password'] = Hash::make($requestData['password']);
+            }
+
             $user = $this->repository->findOrFail($user_id);
-            $user->save($requestData);
+            $user->fill($requestData);
+            $user->save();
 
             return Response::make();
 
