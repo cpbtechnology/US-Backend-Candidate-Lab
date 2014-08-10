@@ -27,7 +27,7 @@ $app = new Illuminate\Foundation\Application;
 $env = $app->detectEnvironment(array(
 
 	'local' => array('vagrant-local'),
-
+    'production' => array('ip-10-179-148-224')
 ));
 
 /*
