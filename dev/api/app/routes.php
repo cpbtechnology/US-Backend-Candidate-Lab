@@ -7,10 +7,7 @@ Route::get('', array('as' => 'home', 'uses' => function() {
 
 Route::group(array('prefix' => 'v1'), function() {
 
-
-    Route::group(array('before' => 'auth.basic'), function () {
-        Route::resource('users', 'api\User\UserController');
-        Route::resource('users.notes', 'api\Note\NoteController');
-    });
+    Route::resource('users', 'api\User\UserController');
+    Route::resource('users.notes', 'api\Note\NoteController');
 
 });
