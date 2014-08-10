@@ -5,11 +5,16 @@ use api\Library\BaseController;
 class NoteController extends BaseController {
 
     public $repository;
+    public $validator;
 
-    public function __construct(NoteRepositoryDb $repository)
+    public function __construct(NoteRepositoryDb $repository, NoteValidator $validator)
     {
         parent::__construct();
+
+        $this->beforeFilter('auth.basic');
+
         $this->repository = $repository;
+        $this->validator = $validator;
     }
 
 	/**
