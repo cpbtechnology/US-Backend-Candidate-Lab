@@ -5,8 +5,7 @@ use Validator;
 class NoteValidator {
 
     private $validationRules = array(
-        'title' => 'required',
-        'description' => 'required'
+        'title' => 'required'
     );
 
     public function validate($data)
@@ -14,14 +13,5 @@ class NoteValidator {
         $validator = Validator::make($data, $this->validationRules);
 
         return $validator;
-    }
-
-    public function update($data, $note_id)
-    {
-        // titles and descriptions can be empty when updating notes
-        unset($this->validationRules['title']);
-        unset($this->validationRules['description']);
-
-        return $this;
     }
 }
