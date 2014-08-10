@@ -137,3 +137,17 @@ service nginx start
 chkconfig mysqld on
 chkconfig php-fpm on
 chkconfig nginx on
+
+
+
+####################################
+# SETUP MYSQL DATABASE
+####################################
+
+mysql -u root -e 'CREATE DATABASE `api` DEFAULT CHARACTER SET `utf8`;'
+
+# Create Tables
+cd /var/www/api && php artisan migrate
+
+# Seed Database
+cd /var/www/api && php artisan db:seed

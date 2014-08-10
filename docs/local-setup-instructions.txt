@@ -1,0 +1,34 @@
+#
+# PROJECT SETUP
+#
+
+1) Install VirtualBox (https://www.virtualbox.org/wiki/Downloads)
+
+2) Install Vagrant (http://www.vagrantup.com/downloads.html)
+
+3) Install Vagrant Gatling Rsync Plugin through CLI: "vagrant plugin install vagrant-gatling-rsync"
+
+4) CD into vagrant directory (/dev/vagrant) and run "vagrant up". Wait for guest machine to be initialized and provisioned.
+
+5) Run this command "vagrant gatling-rsync-auto" (auto syncs changes from host to guest machine)
+
+At this point, the local API URL is now available:
+
+http://notes-api.127.0.0.1.xip.io:8050/
+
+
+
+#
+# MySQL Database Connection (over ssh)
+#
+
+SSH Host: 10.0.0.50
+SSH User: vagrant
+SSH Password: vagrant
+SSH Port: 22
+
+MySQL Host: 127.0.0.1
+MySQL Username: root
+MySQL Password:
+MySQL Databases: "api"
+MySQL Port: 3306
