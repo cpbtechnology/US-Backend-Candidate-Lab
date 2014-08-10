@@ -1,0 +1,44 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  config.vm.provider "virtualbox" do |v|
+    v.name = "Notes API"
+  end
+
+  config.vm.box = "chef/centos-6.5"
+
+  config.vm.network "forwarded_port", guest: 80, host: 8050
+
+  config.vm.hostname = "vagrant-local"
+
+  config.vm.network "private_network", ip: "10.0.0.50"
+
+  config.vm.provision "shell", path: "scripts/setup.sh"
+
+  if Vagrant.has_plugin?("vagrant-gatling-rsync")
+    config.gatling.latency = 0.2
+  end
+
+  config.vm.synced_folder "../api", "/var/www/api",
+    owner: "www",
+    group: "www",
+    type: "rsync",
+    rsync__auto: true,
+    rsync__exclude: [
+      ".svn",
+      ".DS_Store",
+      "app/storage/"
+    ]
+
+  config.vm.synced_folder "../api/app/storage", "/var/www/api/app/storage",
+    owner: "www",
+    group: "www",
+    type: "rsync",
+    rsync__auto: false
+
+end
