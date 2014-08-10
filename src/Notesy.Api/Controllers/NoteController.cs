@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -50,7 +52,7 @@ namespace Notesy.Api.Controllers
         /// <returns></returns>
         public ActionResult Save(Note input, string apikey = null, int? callId = null, string signature = null)
         {
-            if (!ValidateAuth(ToJsonString(input), apikey, signature)) { return new HttpNotFoundResult(); }
+            if (!ApiHelper.ValidateAuth(ApiHelper.ToJsonString(input), apikey, signature)) { return new HttpUnauthorizedResult(); }
 
             var result = noteService.SaveNote(input);
 
@@ -69,7 +71,7 @@ namespace Notesy.Api.Controllers
             // an orm.  we also could have pushed this logic one level lower so we could
             // reuse it.  this will be good for now though.
 
-            if (!ValidateAuth(id.ToString(), apikey, callId.Value.ToString(), signature)) { return new HttpNotFoundResult(); }
+            if (!ApiHelper.ValidateAuth(id.ToString(), apikey, callId.Value.ToString(), signature)) { return new HttpUnauthorizedResult(); }
 
             var user = apiUserService.GetApiUserByApiKey(apikey);
             var note = noteService.GetNote(id);
@@ -83,22 +85,28 @@ namespace Notesy.Api.Controllers
             return Json(note, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id, string apikey = null, int? callId = null, string signature = null)
         {
-            // TODO: add auth stuff
+            if (!ApiHelper.ValidateAuth(id.ToString(), apikey, callId.Value.ToString(), signature)) { return new HttpUnauthorizedResult(); }
+
             var result = noteService.DeleteNote(id);
 
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+    }
 
+    public static class ApiHelper
+    {
         // TODO: the following methods would be good candidates for relocation to a helper or other logical place.
+        // NOTE: Need to start making these public now for testing.  It would be better to put this is in it's own
+        // helper class or something but we're running low on time (for now at least).
 
-        private static bool ValidateAuth(string apiKey, string signatureToCheck, params string[] args)
+        public static bool ValidateAuth(string apiKey, string signatureToCheck, params string[] args)
         {
             // TODO: actual auth stuff
             // 1) lookup api user
             // 2) generate signature of inputs
-            // 3) compare generated signature to incomming signatue
+            // 3) compare generated signature to incoming signature
             // 4) if valid, return true, otherwise false - note there could be a number of other things to check here: api usage, incoming IP, etc.
 
             return true;
@@ -110,20 +118,58 @@ namespace Notesy.Api.Controllers
         /// <param name="signature"></param>
         /// <param name="args"></param>
         /// <returns></returns>
-        private static bool DoSignaturesMatch(ApiUser apiUser, string signature, params string[] args)
+        public static bool DoSignaturesMatch(ApiUser apiUser, string signature, params string[] args)
         {
             // how to generate a signature:
             // 1) concat all the call parameters into one string (see string array above)
             // 2) run some agreed upon encryption algorithm on concat string using the shared secret associated with the apikey => apiuser for this request
-            // 3) TODO: i think i got that right, double-check once implemented and document any changes here
+            
+            // IMPORTANT: for this to actually work correctly we need to store the call id so that api calls cannot be replayed
+            // NOTE: remember this is just sort of a quick homebrew system.  you'd almost certainly want to reuse an appropriate auth library.
+            // TODO: i think i got that right, double-check once implemented and document any changes here
 
-            return true;
+            var sb = new StringBuilder();
+            foreach (var arg in args)
+            {
+                sb.Append(arg);
+            }
+            sb.Append(apiUser.ApiSecret);
+            var gen = ApiHelper.GetHash(sb.ToString());
+
+            return gen == signature;
         }
 
-        private static string ToJsonString(object input)
+        public static string ToJsonString(object input)
         {
             // here is where we'd serialize the object out to a string containing a json object
             return "";
+        }
+
+        private static HashAlgorithm HashProvider = new SHA1Managed();
+
+        public static string GetHash(string input)
+        {
+            byte[] inputBytes = Encoding.UTF8.GetBytes(input);
+            byte[] data = HashProvider.ComputeHash(inputBytes);
+            var output = ByteArrayToHex(data);
+
+            return output;
+        }
+
+        // http://stackoverflow.com/questions/311165/how-do-you-convert-byte-array-to-hexadecimal-string-and-vice-versa
+        public static string ByteArrayToHex(byte[] barray)
+        {
+            char[] c = new char[barray.Length * 2];
+            byte b;
+            for (int i = 0; i < barray.Length; ++i)
+            {
+                b = ((byte)(barray[i] >> 4));
+                c[i * 2] = (char)(b > 9 ? b + 0x37 : b + 0x30);
+                b = ((byte)(barray[i] & 0xF));
+                c[i * 2 + 1] = (char)(b > 9 ? b + 0x37 : b + 0x30);
+            }
+
+            return new string(c);
         }
     }
 }
