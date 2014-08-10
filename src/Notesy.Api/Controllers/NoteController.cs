@@ -29,10 +29,12 @@ namespace Notesy.Api.Controllers
     public class NoteController : Controller
     {
         private readonly INoteService noteService;
+        private readonly IApiUserService apiUserService;
 
-        public NoteController(INoteService noteService)
+        public NoteController(INoteService noteService, IApiUserService apiUserService)
         {
             this.noteService = noteService;
+            this.apiUserService = apiUserService;
         }
 
         // Note: This will be at something like: http://localhost:63185/note/save
@@ -41,10 +43,10 @@ namespace Notesy.Api.Controllers
         /// <summary>
         /// Save a Note.
         /// </summary>
-        /// <param name="input"></param>
-        /// <param name="apikey"></param>
-        /// <param name="signature"></param>
-        /// <param name="callId"></param>
+        /// <param name="input">The note to save.</param>
+        /// <param name="apikey">The api key of the user request.</param>
+        /// <param name="callId">A rotating integer to uniquely identify this request.  Usually just use current ticks count.  There are a number of ways to do this.</param>
+        /// <param name="signature">Signature for this api request.</param>
         /// <returns></returns>
         public ActionResult Save(Note input, string apikey = null, int? callId = null, string signature = null)
         {
@@ -69,9 +71,16 @@ namespace Notesy.Api.Controllers
 
             if (!ValidateAuth(id.ToString(), apikey, callId.Value.ToString(), signature)) { return new HttpNotFoundResult(); }
 
-            var result = noteService.GetNote(id);
+            var user = apiUserService.GetApiUserByApiKey(apikey);
+            var note = noteService.GetNote(id);
 
-            return Json(result, JsonRequestBehavior.AllowGet);
+            if (user.Id == note.ApiUserId)
+            {
+                return Json(note, JsonRequestBehavior.AllowGet);
+            }
+
+            // TODO: Have to think about what to do with errors.
+            return Json(note, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Delete(int id)
@@ -82,8 +91,9 @@ namespace Notesy.Api.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+        // TODO: the following methods would be good candidates for relocation to a helper or other logical place.
 
-        private static bool ValidateAuth(string signatureToCheck, params string[] args)
+        private static bool ValidateAuth(string apiKey, string signatureToCheck, params string[] args)
         {
             // TODO: actual auth stuff
             // 1) lookup api user
@@ -94,9 +104,25 @@ namespace Notesy.Api.Controllers
             return true;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="signature"></param>
+        /// <param name="args"></param>
+        /// <returns></returns>
+        private static bool DoSignaturesMatch(ApiUser apiUser, string signature, params string[] args)
+        {
+            // how to generate a signature:
+            // 1) concat all the call parameters into one string (see string array above)
+            // 2) run some agreed upon encryption algorithm on concat string using the shared secret associated with the apikey => apiuser for this request
+            // 3) TODO: i think i got that right, double-check once implemented and document any changes here
+
+            return true;
+        }
+
         private static string ToJsonString(object input)
         {
-            // here is where we'd serialize to the object out to a string containing a json object
+            // here is where we'd serialize the object out to a string containing a json object
             return "";
         }
     }

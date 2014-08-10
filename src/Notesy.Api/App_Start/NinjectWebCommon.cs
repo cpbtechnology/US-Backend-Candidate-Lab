@@ -50,7 +50,7 @@ namespace Notesy.Api.App_Start
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
                 // Note: Look how easy that is to swap out the fake services (which might not hit a real db) for real ones.  I bet we could 
-                // even do that a config setting or db setting too (or not)!
+                // even do that with a config setting or db setting too (or not)!
 
                 //RegisterServices(kernel);
                 RegisterStubServices(kernel);
@@ -70,11 +70,13 @@ namespace Notesy.Api.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<INoteService>().To<NoteService>().InRequestScope();
+            kernel.Bind<IApiUserService>().To<ApiUserService>().InRequestScope();
         }
 
         private static void RegisterStubServices(IKernel kernel)
         {
             kernel.Bind<INoteService>().To<NoteServiceStub>().InRequestScope();
+            kernel.Bind<IApiUserService>().To<ApiUserServiceStub>().InRequestScope();
         }
     }
 }
