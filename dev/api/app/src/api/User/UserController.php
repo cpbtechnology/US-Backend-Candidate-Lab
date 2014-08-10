@@ -36,9 +36,9 @@ class UserController extends BaseController {
         if($validator->passes()) {
             $requestData['password'] = Hash::make($requestData['password']);
 
-            $this->repository->create($requestData);
+            $user = $this->repository->create($requestData);
 
-            return Response::make();
+            return Response::json(array('id', $user->id));
 
         } else {
             App::abort(400, $validator->messages());
