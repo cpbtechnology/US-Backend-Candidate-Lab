@@ -38,7 +38,7 @@ class UserController extends BaseController {
 
             $this->repository->create($requestData);
 
-            return Response::make('ok', 200);
+            return Response::make();
 
         } else {
             App::abort(400, $validator->messages());
@@ -65,10 +65,10 @@ class UserController extends BaseController {
             $user = $this->repository->findOrFail($user_id);
             $user->save($requestData);
 
-            return Response::make('ok', 200);
+            return Response::make();
 
         } else {
-            return Response::make($validator->messages(), 400);
+            App::abort(400, $validator->messages());
         }
 	}
 

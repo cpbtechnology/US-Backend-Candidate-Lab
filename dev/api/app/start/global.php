@@ -49,6 +49,42 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 App::error(function(Exception $exception, $code)
 {
 	Log::error($exception);
+
+    // looking up a record that can't be found should return a 404
+    // by default, ModelNotFoundException returns an error code of 500
+    if ($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException) {
+        $code = 404;
+    }
+
+    switch ($code) {
+        case 400:
+            $message = $exception->getMessage();
+            break;
+
+        case 401:
+            $message = 'Unauthorized';
+            break;
+
+        case 404:
+            $message = 'Record Not Found';
+            break;
+
+        case 500:
+            $message  = 'Internal Server Error';
+            $message .= Config::get('app.debug') ? ' - ' . $exception->getMessage() : '';
+            break;
+
+        default:
+            $message = $exception->getMessage();
+            break;
+    }
+
+    $responseData = array(
+        'error' => true,
+        'error_message' => $message,
+    );
+
+    return Response::json($responseData, $code);
 });
 
 /*

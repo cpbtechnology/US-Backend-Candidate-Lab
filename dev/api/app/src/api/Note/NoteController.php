@@ -72,10 +72,10 @@ class NoteController extends BaseController {
             $requestData['user_id'] = Auth::user()->id;
             $this->repository->create($requestData);
 
-            return Response::make('ok', 200);
+            return Response::make();
 
         } else {
-            return Response::make($validator->messages(), 400);
+            App::abort(400, $validator->messages());
         }
 	}
 
@@ -104,10 +104,10 @@ class NoteController extends BaseController {
             $note->description = $requestData['description'];
             $note->save();
 
-            return Response::make('ok', 200);
+            return Response::make();
 
         } else {
-            return Response::make($validator->messages(), 400);
+            App::abort(400, $validator->messages());
         }
 	}
 
@@ -129,7 +129,7 @@ class NoteController extends BaseController {
 
         $note->delete();
 
-        return Response::make('ok', 200);
+        return Response::make();
 	}
 
 }
