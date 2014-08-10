@@ -27,7 +27,7 @@ class NoteRepositoryDb extends BaseRepositoryDb {
      */
     public function getUserNotes($user_id)
     {
-        return self::where('user_id', $user_id)->get(array('title', 'description'));
+        return self::where('user_id', $user_id)->get(array('id', 'title', 'description', 'created_at', 'updated_at'));
     }
 
     /**
@@ -38,6 +38,6 @@ class NoteRepositoryDb extends BaseRepositoryDb {
      */
     public function getUserNote($user_id, $note_id)
     {
-        return self::where('user_id', $user_id)->findOrFail($note_id, array('title', 'description'));
+        return self::where('user_id', $user_id)->findOrFail($note_id, array('id', 'title', 'description', 'created_at', 'updated_at'));
     }
 }
