@@ -21,12 +21,20 @@ class UserRepositoryDb extends BaseRepositoryDb implements UserInterface, Remind
      *
      * @var array
      */
-    protected $hidden = array('password', 'remember_token');
+    protected $hidden = array(
+        'password',
+        'remember_token'
+    );
 
-    protected $fillable = [
+    protected $fillable = array(
         'username',
         'password',
-    ];
+    );
+
+    public function notes()
+    {
+        return $this->hasMany('api\Note\NoteRepositoryDb', 'user_id');
+    }
 
     /**
      * Get the unique identifier for the user.

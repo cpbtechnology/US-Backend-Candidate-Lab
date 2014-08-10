@@ -1,6 +1,7 @@
 <?php namespace api\User;
 
 use App;
+use Auth;
 use Input;
 use Response;
 use Hash;
@@ -52,18 +53,23 @@ class UserController extends BaseController {
 	 */
 	public function update($user_id)
 	{
-		//
-	}
+        if (Auth::user()->id != $user_id) {
+            App::abort(401);
+        }
 
-	/**
-	 * Remove the specified user.
-	 *
-	 * @param  int  $user_id
-	 * @return Response
-	 */
-	public function destroy($user_id)
-	{
-		//
+        $requestData = Input::all();
+
+        $validator = $this->validator->validate($requestData);
+
+        if($validator->passes()) {
+            $user = $this->repository->findOrFail($user_id);
+            $user->save($requestData);
+
+            return Response::make('ok', 200);
+
+        } else {
+            return Response::make($validator->messages(), 400);
+        }
 	}
 
 }
