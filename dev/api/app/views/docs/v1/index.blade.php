@@ -92,6 +92,7 @@
                 <h4>Create Note</h4>
                 <p><strong>URL: </strong>/users/<span class="arg">$userID</span>/notes/</p>
                 <p>HTTP Method: POST</p>
+                <p>POST DATA:</p>
                 <ul>
                     <li>title</li>
                     <li>description</li>
