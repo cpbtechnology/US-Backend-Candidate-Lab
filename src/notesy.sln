@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notesy.Web", "Notesy.Web\Notesy.Web.csproj", "{7CAD7D06-49CF-4143-BBB0-1A884EC20D57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notesy.Api", "Notesy.Api\Notesy.Api.csproj", "{291D09DB-7DCB-41DB-B634-942B1F8BC545}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notesy.Core", "Notesy.Core\Notesy.Core.csproj", "{5DD8FFDA-34C8-4F81-8740-20E29BFC4E90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notesy.Tests", "Notesy.Tests\Notesy.Tests.csproj", "{AE724AF0-7C54-427D-87F8-AD0E9056EE25}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7CAD7D06-49CF-4143-BBB0-1A884EC20D57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CAD7D06-49CF-4143-BBB0-1A884EC20D57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CAD7D06-49CF-4143-BBB0-1A884EC20D57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CAD7D06-49CF-4143-BBB0-1A884EC20D57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{291D09DB-7DCB-41DB-B634-942B1F8BC545}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{291D09DB-7DCB-41DB-B634-942B1F8BC545}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{291D09DB-7DCB-41DB-B634-942B1F8BC545}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{291D09DB-7DCB-41DB-B634-942B1F8BC545}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DD8FFDA-34C8-4F81-8740-20E29BFC4E90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DD8FFDA-34C8-4F81-8740-20E29BFC4E90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DD8FFDA-34C8-4F81-8740-20E29BFC4E90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DD8FFDA-34C8-4F81-8740-20E29BFC4E90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE724AF0-7C54-427D-87F8-AD0E9056EE25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE724AF0-7C54-427D-87F8-AD0E9056EE25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE724AF0-7C54-427D-87F8-AD0E9056EE25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE724AF0-7C54-427D-87F8-AD0E9056EE25}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

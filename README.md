@@ -84,3 +84,21 @@ Submit a pull request when you are finished and satisfied with your work.
 
 ## License
 [MIT](http://opensource.org/licenses/MIT)
+
+
+----
+edits by longda below:
+
+
+## Note #1:
+At this point, we've reached a critical juncture in our journey.  If we were working a big team, we could start dividing things up:
+
+1. If we had a web app that user's could, um, use to make notes for instance, we could hand that off to a front-end dev to start whipping things out using the stub services rather than REAL services that have to hit a REAL data store.  Another example (which could be developed in tandem) would be an admin site where our internal team could start setting up user accounts to use our API.
+2. We could start talking to a dba type to start setting up our db and our sprocs, etc.
+3. We could also have a middle-tier dev start fleshing out the API calls and the auth and maybe even an ORM or something.
+4. Or we could scrap all that and just have a tech lead do it!  :boom:
+
+
+## Note #2:
+Here's the sample output from the get call as of this point:
+{"Id":1,"Title":"Go to the Galaxy Game.","Description":"Head over to Stub Hub Center in Carson, California for a lovely game of fútbol.","IsComplete":false}
